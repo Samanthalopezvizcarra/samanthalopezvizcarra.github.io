@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samantha López Vizcarra | Data Scientist</title>
+  <style>
+    /* --- PALETA DARK MINIMALISTA --- */
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --text: #e6e6e6;
+      --accent: #8ab4f8;
+      --accent-soft: #5f8ad5;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--accent-soft);
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 4px;
+      margin-top: 40px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+      padding-bottom: 50px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 18px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .contact a {
+      margin: 0 8px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="your-photo.jpg" alt="Samantha Lopez Vizcarra" style="width:160px;height:160px;border-radius:50%;object-fit:cover;margin-bottom:20px;">
+  <h1>Samantha López Vizcarra</h1>
+  <p>Data Scientist | Machine Learning | Python | SQL</p>
+  <p class="contact">
+    <a href="mailto:samanthalopezvizcarra@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    ·
+    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    ·
+    <a href="#"><i class="fa-brands fa-github"></i></a>
+    · Nuevo León, México
+  </p>
+</header>
+
+<div class="container">
+
+  <h2>Projects</h2>
+<div class="projects-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:30px;">
+
+<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+  <img src="project1.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
+  <div style="padding:20px;">
+    <strong>Predicción de planes telefónicos (TripleTen)</strong>
+    <ul>
+      <li>Modelos ML: Árboles, Random Forest y Regresión Logística.</li>
+      <li>Modelo final: Random Forest (81.8% precisión).</li>
+    </ul>
+  </div>
+</a>
+
+<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+  <img src="project2.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
+  <div style="padding:20px;">
+    <strong>Detección y predicción de incendios – Green Tech Innovation</strong>
+    <ul>
+      <li>Integración de APIs ambientales y GEE.</li>
+      <li>Modelo YOLO para detección.</li>
+      <li>Visualización geoespacial con MapTiler y leafmap.</li>
+    </ul>
+  </div>
+</a>
+
+<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+  <img src="project3.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
+  <div style="padding:20px;">
+    <strong>Automatización de ficha social – ONG Techo</strong>
+    <ul>
+      <li>Transformación de datos y migración a MySQL.</li>
+      <li>Dashboard interactivo en Looker Studio.</li>
+      <li>Automatización de recolección con Google Forms.</li>
+    </ul>
+  </div>
+</a>
+
+</div>
+
+<h2>Skills</h2>
+  <div class="card">
+    <strong>Lenguajes:</strong> Python, SQL, MySQL, C++, MATLAB, HTML.<br>
+    <strong>Herramientas:</strong> Pandas, NumPy, Sklearn, Matplotlib, Seaborn, Git, Looker Studio, Power BI, APIs, Jupyter.<br>
+    <strong>Idiomas:</strong> Inglés B2, Español nativo.<br>
+  </div>
+
+</div>
+
+</body>
+</html>
