@@ -8,17 +8,17 @@
   <style>
     /* --- PALETA DARK MINIMALISTA --- */
     :root {
-      --bg: #0f0f0f;
-      --card: #1a1a1a;
-      --text: #e6e6e6;
-      --accent: #8ab4f8;
-      --accent-soft: #5f8ad5;
+      --bg: #ffffff;
+      --card: #fafafa;
+      --text: #2a2a2a;
+      --accent: #4f5b66;
+      --accent-soft: #6c7a89;
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: "Inter", sans-serif;
+      font-family: "Helvetica Neue", "Inter", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -63,6 +63,7 @@
       margin-top: 18px;
       box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
       transition: transform 0.2s;
+      color: #000000;
     }
     .card:hover {
       transform: translateY(-3px);
@@ -87,9 +88,9 @@
   <p class="contact">
     <a href="mailto:samanthalopezvizcarra@gmail.com"><i class="fa-solid fa-envelope"></i></a>
     ·
-    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    <a href=https://www.linkedin.com/in/samanthalopez-datascientist/"><i class="fa-brands fa-linkedin"></i></a>
     ·
-    <a href="#"><i class="fa-brands fa-github"></i></a>
+    <a href="https://github.com/Samanthalopezvizcarra"><i class="fa-brands fa-github"></i></a>
     · Nuevo León, México
   </p>
 </header>
@@ -99,35 +100,22 @@
   <h2>Projects</h2>
 <div class="projects-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:30px;">
 
-<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+<a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
   <img src="project1.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
   <div style="padding:20px;">
-    <strong>Predicción de planes telefónicos (TripleTen)</strong>
+    <strong style="color:#000000;">Mobile Plan Recommender</strong>
     <ul>
-      <li>Modelos ML: Árboles, Random Forest y Regresión Logística.</li>
-      <li>Modelo final: Random Forest (81.8% precisión).</li>
+      <li>Modelo de clasificación que recomienda el plan óptimo.</li>
+      <li>Random Forest: mejor modelo (Accuracy 0.818).</li>
+      <li>Otros modelos: Decision Tree, Logistic Regression.</li>
     </ul>
   </div>
 </a>
 
-<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
-  <img src="project1.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
-  <div style="padding:20px;">
-    <strong>Mobile Plan Predictor</strong>
-    <ul>
-      Modelo de clasificación que recomienda el plan telefónico óptimo (Smart o Ultra) según el comportamiento mensual de los usuarios.
-      <li>Mejor modelo: Random Forest (max_depth=4, n_estimators=10).</li>
-      <li>Accuracy en test: 0.8180.</li>
-      <li>Otros modelos evaluados: Decision Tree, Logistic Regression.</li>
-      <li>Tecnologías: Python, pandas, scikit-learn.</li>
-    </ul>
-  </div>
-</a>
-  
-<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+<a href="https://github.com/TU-USUARIO/TU-REPO" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
   <img src="project2.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
   <div style="padding:20px;">
-    <strong>Detección y predicción de incendios – Green Tech Innovation</strong>
+    <strong style="color:#000000;">Detección y predicción de incendios – Green Tech Innovation</strong>
     <ul>
       <li>Integración de APIs ambientales y GEE.</li>
       <li>Modelo YOLO para detección.</li>
@@ -136,10 +124,10 @@
   </div>
 </a>
 
-<a href="#" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
+<a href="https://github.com/TU-USUARIO/TU-REPO" class="card" style="display:block;padding:0;overflow:hidden;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(14px);border-radius:16px;transition:all .3s ease;">
   <img src="project3.jpg" style="width:100%;height:180px;object-fit:cover;display:block;">
   <div style="padding:20px;">
-    <strong>Automatización de ficha social – ONG Techo</strong>
+    <strong style="color:#000000;">Automatización de ficha social – ONG Techo</strong>
     <ul>
       <li>Transformación de datos y migración a MySQL.</li>
       <li>Dashboard interactivo en Looker Studio.</li>
@@ -152,9 +140,9 @@
 
 <h2>Skills</h2>
   <div class="card">
-    <strong>Lenguajes:</strong> Python, SQL, MySQL, C++, MATLAB, HTML.<br>
-    <strong>Herramientas:</strong> Pandas, NumPy, Sklearn, Matplotlib, Seaborn, Git, Looker Studio, Power BI, APIs, Jupyter.<br>
-    <strong>Idiomas:</strong> Inglés B2, Español nativo.<br>
+    <strong style="color:#000000;">Lenguajes:</strong> Python, SQL, MySQL, C++, MATLAB, HTML.<br>
+    <strong style="color:#000000;">Herramientas:</strong> Pandas, NumPy, Sklearn, Matplotlib, Seaborn, Git, Looker Studio, Power BI, APIs, Jupyter.<br>
+    <strong style="color:#000000;">Idiomas:</strong> Inglés B2, Español nativo.<br>
   </div>
 
 </div>
