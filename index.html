@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samantha López Vizcarra | Data Scientist</title>
+  <title>Samantha López Vizcara | Data Scientist</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* FIX: Remove horizontal scroll */
     html, body {
       overflow-x: hidden;
     }
-
     /* LIGHT MODE */
     :root {
       --bg: #f7f7f5;
@@ -89,14 +87,14 @@
       border:1px solid var(--glass-border);
       transition: box-shadow .28s ease, transform .2s ease;
       box-shadow: var(--shadow);
+      overflow:hidden;
     }
     .about-box:hover { box-shadow: var(--glow); transform: translateY(-4px); }
     .about-box p { margin:0; font-size:1rem; }
 
-    /* Skills grid */
-    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    /* Skills boxes */
+    .skills-grid { flex:0.9; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
     @media (max-width:880px) { .skills-grid { grid-template-columns:repeat(1,1fr); } }
-
     .skill-card {
       background: var(--card);
       padding:16px;
@@ -106,9 +104,11 @@
       display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
     }
     .skill-card:hover { box-shadow: var(--glow); transform: translateY(-4px); }
+    .skill-card strong { display:block; margin-bottom:6px; }
+    .skill-card p { margin:0; font-size:0.92rem; line-height:1.18; color:var(--text); }
 
     /* PROJECT CAROUSEL */
-    .projects-wrapper { margin-top:36px; position:relative; overflow:hidden; }
+    .projects-wrapper { margin-top:36px; position:relative; }
     .carousel-controls { position:absolute; right:12px; top:-46px; display:flex; gap:8px; }
     .carousel-btn { background:var(--card); padding:8px 10px; border-radius:8px; border:1px solid var(--glass-border); cursor:pointer; }
 
@@ -120,10 +120,24 @@
     .project-card:hover img { transform:scale(1.06); filter: blur(4px) brightness(.55); }
     .project-card:hover .project-info { opacity:1; }
 
+    /* ensure text doesn't cut and has equal padding */
+    .project-info h3 { margin:0 0 8px 0; font-size:1.15rem; }
+    .project-info p { margin:0; font-size:0.95rem; line-height:1.3; max-height:5.2em; overflow:auto; }
+
+    /* hide scrollbar but still scrollable inside overlay if needed */
+    .project-info p::-webkit-scrollbar { width:6px; height:6px; }
+    .project-info p::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius:6px; }
+
+    /* responsive tweaks */
+    @media (max-width:640px) {
+      .project-card { width:260px; height:180px; }
+      .projects-track { gap:14px; }
+    }
+
     footer { text-align:center; padding:40px; color:var(--accent); }
+
   </style>
 </head>
-
 <body>
 
 <nav>
@@ -148,57 +162,127 @@
 
 <div class="container">
 
-  <!-- ABOUT -->
   <h2 id="about">About Me</h2>
   <div class="two-col">
     <div class="about-box">
-      <p>
-        Soy Científica de Datos con sólida formación en matemáticas, estadística e ingeniería...
-      </p>
+      <p>Soy Científica de Datos con sólida formación en matemáticas, estadística e ingeniería, especializada en machine learning, análisis de datos y desarrollo de soluciones basadas en Python y SQL. Disfruto resolver problemas complejos, optimizar procesos, crear visualizaciones claras y construir modelos predictivos eficientes. Busco seguir desarrollándome profesionalmente en proyectos con impacto real.</p>
     </div>
   </div>
+</div></div>
 
-  <!-- PROJECTS -->
-  <h2 id="projects">Projects</h2>
+
+
+<h2 id="projects">Projects</h2>
   <div class="projects-wrapper">
     <div class="carousel-controls">
       <button class="carousel-btn" id="prev">◀</button>
       <button class="carousel-btn" id="next">▶</button>
     </div>
-
     <div class="projects-track" id="track">
-      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" class="project-card">
-        <img src="mobile-plan.jpg">
-        <div class="project-info"><h3>Mobile plan recommender</h3><p>Modelo de clasificación que recomienda el plan telefónico óptimo.</p></div>
-      </a>
-
-      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" class="project-card">
-        <img src="bankchurn.jpg">
-        <div class="project-info"><h3>Bank customer churn prediction</h3><p>Modelo para detectar clientes en riesgo de abandonar el banco.</p></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <h2 id="skills">Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <strong>Lenguajes</strong>
-      <p>Python · SQL · C++ · MATLAB</p>
-    </div>
-    <div class="skill-card">
-      <strong>Herramientas</strong>
-      <p>Pandas · NumPy · Scikit-learn · Power BI · Looker Studio</p>
-    </div>
-    <div class="skill-card">
-      <strong>Otras</strong>
-      <p>Modelado estadístico · Visualización · Git · Jupyter</p>
+      <!-- Static project cards inserted -->
+      <!-- BEGIN USER PROJECTS -->
+      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" class="project-card"><img src="mobile-plan.jpg"><div class="project-info"><h3>Mobile plan recommender</h3><p>Modelo de clasificación que recomienda el plan telefónico óptimo.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" class="project-card"><img src="bankchurn.jpg"><div class="project-info"><h3>Bank customer churn prediction</h3><p>Modelo para detectar clientes en riesgo de abandonar el banco.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" class="project-card"><img src="oil.jpg"><div class="project-info"><h3>Oil well profit optimization</h3><p>Selección de la mejor región para abrir 200 nuevos pozos.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" class="project-card"><img src="gold.jpg"><div class="project-info"><h3>Gold recovery prediction</h3><p>Predicción de recuperación de oro en distintas etapas.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" class="project-card"><img src="carprice.jpg"><div class="project-info"><h3>Car price prediction</h3><p>Predicción del valor de coches de segunda mano.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" class="project-card"><img src="taxi.jpg"><div class="project-info"><h3>Taxi demand prediction</h3><p>Predicción de pedidos de taxis por hora.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" class="project-card"><img src="reviews.jpg"><div class="project-info"><h3>Movie review classification</h3><p>Clasificación automática de reseñas de películas.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" class="project-card"><img src="face.jpg"><div class="project-info"><h3>Age verification with face recognition</h3><p>Predicción de edad mediante reconocimiento facial.</p></div></a>
+      <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" class="project-card"><img src="internet.jpg"><div class="project-info"><h3>Internet customers churn prediction</h3><p>Predicción de pérdida de clientes de internet.</p></div></a>
+      <a href="https://github.com/JesusAntonioL/fwi_equipo_1" class="project-card"><img src="fire.jpg"><div class="project-info"><h3>Wildfire detection and prediction</h3><p>Detección y predicción de incendios forestales.</p></div></a>
+      <!-- END USER PROJECTS -->
     </div>
   </div>
 
 </div>
 
+<h2 id="skills">Skills</h2>
+<div class="skills-grid">
+  <div class="skill-card">
+    <strong>Lenguajes</strong>
+    <p>Python · SQL · C++ · MATLAB</p>
+  </div>
+  <div class="skill-card">
+    <strong>Herramientas</strong>
+    <p>Pandas · NumPy · Scikit-learn · Power BI · Looker Studio</p>
+  </div>
+  <div class="skill-card">
+    <strong>Otras</strong>
+    <p>Modelado estadístico · Visualización · Git · Jupyter</p>
+  </div>
+</div>
+
 <footer>© 2025 Samantha López Vizcarra</footer>
+
+<script>
+// Scroll reveal for about and skill boxes
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+},{ threshold: 0.15 });
+document.querySelectorAll('.about-box, .skill-card').forEach(el=>observer.observe(el));
+
+// Projects data (you can replace images/links)
+const projects = [
+  {title:'Mobile plan recommender', img:'mobile-plan.jpg', desc:'Random Forest (max_depth=4, n_estimators=10). Accuracy: 0.818. Python, pandas, scikit-learn.', link:'https://github.com/Samanthalopezvizcarra/mobile-plan-predictor'},
+  {title:'Bank customer churn prediction', img:'bankchurn.jpg', desc:'Detección de clientes en riesgo. Técnicas: upsampling, class weights y ajuste de umbral.', link:'https://github.com/Samanthalopezvizcarra/bank-retention-model'},
+  {title:'Oil well profit optimization', img:'oil.jpg', desc:'Predicción de reservas y estimación de beneficios para selección de región.', link:'https://github.com/Samanthalopezvizcarra/oil-profit-optimization'},
+  {title:'Gold recovery prediction', img:'gold.jpg', desc:'Predicción de recuperación de oro con K-Fold CV y limpieza avanzada.', link:'https://github.com/Samanthalopezvizcarra/gold-recovery-prediction'},
+  {title:'Car price prediction', img:'carprice.jpg', desc:'Comparativa RF, LGBM, XGBoost y CatBoost para predicción de precios.', link:'https://github.com/Samanthalopezvizcarra/car-price-prediction'},
+  {title:'Taxi demand prediction', img:'taxi.jpg', desc:'Pronóstico por hora para optimizar disponibilidad en aeropuertos.', link:'https://github.com/Samanthalopezvizcarra/taxi-demand-prediction'},
+  {title:'Movie review classification', img:'reviews.jpg', desc:'NLP para clasificar reseñas con F1 >= 0.85.', link:'https://github.com/Samanthalopezvizcarra/movie-review-classification'},
+  {title:'Age verification with face recognition', img:'face.jpg', desc:'Predicción de edad mediante modelos CNN (TensorFlow/Keras).', link:'https://github.com/Samanthalopezvizcarra/age-face-recognition'},
+  {title:'Internet customers churn prediction', img:'internet.jpg', desc:'Balanceo de clases y optimización de hiperparámetros.', link:'https://github.com/Samanthalopezvizcarra/predict-customer-churn'},
+  {title:'Wildfire detection and prediction', img:'fire.jpg', desc:'Detección y predicción de incendios con APIs y visión computacional.', link:'https://github.com/JesusAntonioL/fwi_equipo_1'}
+];
+
+// build carousel items
+const track = document.getElementById('track');
+function createCard(p){
+  const a = document.createElement('a');
+  a.href = p.link; a.target = '_blank';
+  a.className = 'project-card';
+  a.innerHTML = `<img src="${p.img}" alt="${p.title}">
+    <div class="project-info">
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+    </div>`;
+  return a;
+}
+projects.forEach(p=> track.appendChild(createCard(p)));
+// duplicate for seamless loop
+projects.forEach(p=> track.appendChild(createCard(p)));
+
+// smoother manual controls + auto-scroll with pause on hover
+let pos = 0; const cardWidth = 342; // width + gap approx
+let isHover=false;
+const speed = 0.6; // px per frame for auto scroll
+function step(){
+  if(!isHover){ pos += speed; }
+  if(pos >= track.scrollWidth/2) pos = 0;
+  track.style.transform = `translateX(${-pos}px)`;
+  requestAnimationFrame(step);
+}
+track.parentElement.addEventListener('mouseenter', ()=> isHover=true);
+track.parentElement.addEventListener('mouseleave', ()=> isHover=false);
+requestAnimationFrame(step);
+
+// next/prev buttons (smooth shift)
+document.getElementById('next').addEventListener('click', ()=>{
+  pos += cardWidth; track.style.transition = 'transform .6s cubic-bezier(.22,.9,.29,1)';
+  track.style.transform = `translateX(${-pos}px)`;
+  setTimeout(()=> track.style.transition='none', 650);
+});
+document.getElementById('prev').addEventListener('click', ()=>{
+  pos = Math.max(0, pos - cardWidth); track.style.transition = 'transform .6s cubic-bezier(.22,.9,.29,1)';
+  track.style.transform = `translateX(${-pos}px)`;
+  setTimeout(()=> track.style.transition='none', 650);
+});
+
+// make sure about/skills reveal works
+window.addEventListener('load', ()=>{ document.querySelectorAll('.about-box, .skill-card').forEach(el=> el.classList.add('show')); });
+
+</script>
 
 </body>
 </html>
