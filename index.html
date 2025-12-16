@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samantha Lopez Vizcarra | Data Scientist</title>
+  <title>Samantha López Vizcarra | Data Scientist</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    html, body {
-      overflow-x: hidden;
-    }
-    /* LIGHT MODE */
+    html, body { overflow-x: hidden; }
+
     :root {
       --bg: #f7f7f5;
-      --card: rgba(255, 255, 255, 0.9);
+      --card: rgba(255,255,255,0.9);
       --text: #1e1e1e;
       --accent: #6b6f76;
       --accent-soft: #8b8f96;
@@ -22,7 +22,6 @@
       --glow: 0 6px 24px rgba(106,123,255,0.10);
     }
 
-    /* DARK MODE AUTO */
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0f0f0f;
@@ -36,107 +35,51 @@
       }
     }
 
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* NAVBAR */
+    /* NAV */
     nav {
       position: fixed;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255,255,255,0.7);
+      background: var(--card);
       backdrop-filter: blur(8px);
       padding: 8px 18px;
       border-radius: 999px;
       z-index: 1200;
       border: 1px solid var(--glass-border);
     }
-    @media (prefers-color-scheme: dark) {
-      nav { background: rgba(10,10,10,0.6); }
-    }
-    nav ul { list-style: none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
-    nav a { color: var(--text); text-decoration:none; font-weight:600; font-size:0.95rem; padding:6px 10px; border-radius:8px; }
-    nav a:hover { background: rgba(0,0,0,0.04); color:var(--accent); }
 
-    header { text-align:center; padding:120px 20px 30px; }
-    header img { width:140px; height:140px; border-radius:18px; object-fit:cover; box-shadow: var(--shadow); }
-    h1 { font-size:2.4rem; margin:12px 0 4px; }
-    p.lead { margin:0; color:var(--accent-soft); }
-
-    .container { width:92%; max-width:1150px; margin:40px auto 80px; }
-
-    /* ABOUT + SKILLS layout aligned */
-    .two-col { display:flex; gap:28px; align-items:flex-start; }
-    @media (max-width:880px) { .two-col { flex-direction:column; } }
-
-    /* About box */
-    .about-box {
-      flex:1.2;
-      background: var(--card);
-      padding:22px;
-      border-radius:12px;
-      border:1px solid var(--glass-border);
-      transition: box-shadow .28s ease, transform .2s ease;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .about-box:hover { box-shadow: var(--glow); transform: translateY(-4px); }
-    .about-box p { margin:0; font-size:1rem; }
-
-        /* CONTACT SECTION */
-    .contact-box {
-      background: var(--card);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 24px;
-      max-width: 520px;
-      margin: 20px auto 0;
-      box-shadow: var(--shadow);
+    nav ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 14px;
+      gap: 18px;
+      padding: 0;
+      margin: 0;
     }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.95rem;
-    }
-    
-    .contact-item i {
-      color: var(--accent);
-      font-size: 1.1rem;
-      width: 22px;
-    }
-    
-    .contact-item a {
-      color: var(--text);
+
+    nav a {
       text-decoration: none;
-    }
-    
-    .contact-item a:hover {
-      color: var(--accent);
-      text-decoration: underline;
+      color: var(--text);
+      font-weight: 600;
+      font-size: .95rem;
     }
 
-        /* LANGUAGE TOGGLE */
+    /* LANGUAGE BUTTON */
     .lang-toggle {
       position: fixed;
       top: 14px;
       right: 18px;
       z-index: 1300;
     }
-    
+
     .lang-toggle button {
       background: var(--card);
       border: 1px solid var(--glass-border);
@@ -146,66 +89,94 @@
       cursor: pointer;
       box-shadow: var(--shadow);
     }
-    
-    .lang-toggle button:hover {
-      box-shadow: var(--glow);
+
+    header {
+      text-align: center;
+      padding: 120px 20px 40px;
     }
 
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
 
-    /* Skills boxes */
-    .skills-grid { flex:0.9; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    @media (max-width:880px) { .skills-grid { grid-template-columns:repeat(1,1fr); } }
+    .lead { color: var(--accent-soft); }
+
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: 40px auto 80px;
+    }
+
+    h2 { margin-top: 60px; }
+
+    .two-col { display: flex; gap: 28px; }
+    @media (max-width: 880px) { .two-col { flex-direction: column; } }
+
+    .about-box {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+
     .skill-card {
       background: var(--card);
-      padding:16px;
-      border-radius:10px;
-      border:1px solid var(--glass-border);
-      transition: box-shadow .2s ease, transform .18s ease;
-      display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
-    }
-    .skill-card:hover { box-shadow: var(--glow); transform: translateY(-4px); }
-    .skill-card strong { display:block; margin-bottom:6px; }
-    .skill-card p { margin:0; font-size:0.92rem; line-height:1.18; color:var(--text); }
-
-    /* PROJECT CAROUSEL */
-    .projects-wrapper { margin-top:36px; position:relative; }
-    .carousel-controls { position:absolute; right:12px; top:-46px; display:flex; gap:8px; }
-    .carousel-btn { background:var(--card); padding:8px 10px; border-radius:8px; border:1px solid var(--glass-border); cursor:pointer; }
-
-    .projects-track { display:flex; gap:22px; align-items:center; transition: transform .6s cubic-bezier(.22,.9,.29,1); }
-    .project-card { width:380px; height:260px; border-radius:12px; overflow:hidden; position:relative; flex:0 0 auto; }
-
-    .project-card img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .6s ease, filter .45s ease; }
-    .project-card .project-info { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:20px; color:white; text-shadow:0 2px 8px rgba(0,0,0,0.5); opacity:0; transition: opacity .35s ease; }
-    .project-card:hover img { transform:scale(1.06); filter: blur(4px) brightness(.55); }
-    .project-card:hover .project-info { opacity:1; }
-
-    /* ensure text doesn't cut and has equal padding */
-    .project-info h3 { margin:0 0 8px 0; font-size:1.15rem; }
-    .project-info p { margin:0; font-size:0.95rem; line-height:1.3; max-height:5.2em; overflow:auto; }
-
-    /* hide scrollbar but still scrollable inside overlay if needed */
-    .project-info p::-webkit-scrollbar { width:6px; height:6px; }
-    .project-info p::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius:6px; }
-
-    /* responsive tweaks */
-    @media (max-width:640px) {
-      .project-card { width:260px; height:180px; }
-      .projects-track { gap:14px; }
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
     }
 
-    footer { text-align:center; padding:40px; color:var(--accent); }
+    /* CONTACT */
+    .contact-box {
+      max-width: 520px;
+      margin: 20px auto;
+      background: var(--card);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--accent);
+    }
   </style>
 </head>
+
 <body>
 
 <nav>
   <ul>
-    <li><a href="#about" data-es="About" data-en="About Me">About</a></li>
-    <li><a href="#projects" data-es="Projects" data-en="Projects">Projects</a></li>
-    <li><a href="#skills" data-es="Skills" data-en="Skills">Skills</a></li>
-    <li><a href="#contact" data-es="Contact" data-en="Contact">Contact</a></li>
+    <li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
+    <li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
+    <li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -214,16 +185,10 @@
 </div>
 
 <header>
-  <img src="me.jpg" alt="Samantha" />
+  <img src="me.jpg" alt="Samantha">
   <h1>Samantha López Vizcarra</h1>
   <p class="lead" data-es="Data Scientist Jr" data-en="Junior Data Scientist">
-  Data Scientist Jr
-  </p>
-
-  <p class="contact">
-    <a href="mailto:samanthalopezvizcarra@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-    <a href="https://www.linkedin.com/in/samanthalopez-datascientist/"><i class="fa-brands fa-linkedin"></i></a>
-    <a href="https://github.com/Samanthalopezvizcarra"><i class="fa-brands fa-github"></i></a>
+    Data Scientist Jr
   </p>
 </header>
 
@@ -234,178 +199,61 @@
   <div class="two-col">
     <div class="about-box">
       <p
-        data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Con conocimientos prácticos y orientados a proyectos en machine learning, análisis y visualización de datos, así como manejo de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean. Mi experiencia previa como desarrolladora de prototipos I+D en el sector biomédico me ha proporcionado habilidades blandas en resolución de problemas complejos, atención al detalle y colaboración en equipos multidisciplinarios. Busco aplicar esta combinación única de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
-        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as proficiency in key tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies. My previous experience as an R&D prototype developer in the biomedical sector has strengthened my soft skills in complex problem-solving, attention to detail, and collaboration in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and develop solutions that create real value."
-      >
+        data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística..."
+        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics...">
       </p>
     </div>
   </div>
 
-</div>
+  <h2 id="skills" data-es="Habilidades" data-en="Skills">Skills</h2>
 
-
-  
-  <h2 id="projects">Projects</h2>
-  <div class="projects-wrapper">
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="prev">◀</button>
-      <button class="carousel-btn" id="next">▶</button>
-    </div>
-    <div class="projects-track" id="track">
-      <!-- Static project cards inserted -->
-      <!-- BEGIN USER PROJECTS -->
-      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" class="project-card"><img src="mobile-plan.jpg"><div class="project-info"><h3>Mobile plan recommender</h3><p>Desarrollo de un modelo de clasificación capaz de recomendar el plan telefónico óptimo para cada cliente. Su objetivo es sustituir los planes antiguos y proponer alternativas más adecuadas según las características del usuario. Para lograrlo, se entrenan modelos como Random Forest, Decision Tree y Logistic Regression, comparando su rendimiento para seleccionar la mejor opción.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" class="project-card"><img src="bankchurn.jpg"><div class="project-info"><h3>Bank customer churn prediction</h3><p>Detección de clientes con riesgo de abandono en un banco mediante un modelo de predicción de churn. El objetivo es identificar a quienes tienen riesgo de cerrar su cuenta, optimizando el F1 Score. Para enfrentar el desbalance de clases se aplican técnicas como upsampling, uso de class weights y ajuste de umbral, lo que permite mejorar la capacidad del modelo para reconocer casos minoritarios.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" class="project-card"><img src="oil.jpg"><div class="project-info"><h3>Oil well profit optimization</h3><p>Se busca seleccionar la región más rentable para abrir 200 nuevos pozos petrolíferos. El objetivo consiste en predecir las reservas estimadas de petróleo y evaluar los beneficios potenciales, asegurando que el riesgo sea menor al 2.5%. El proyecto utiliza tecnologías como Python, pandas, scikit-learn y numpy para realizar el análisis, construir modelos predictivos y evaluar diversas estrategias de selección.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" class="project-card"><img src="gold.jpg"><div class="project-info"><h3>Gold recovery prediction</h3><p>Predicción de la recuperación de oro en distintas etapas del proceso de purificación, tanto en la fase rougher como en la final. Su objetivo es estimar estos valores para optimizar la eficiencia del proceso. Se emplean técnicas de imputación y escalado, eliminación de anomalías y validación cruzada mediante K-Fold, garantizando un análisis riguroso y modelos de buen desempeño.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" class="project-card"><img src="carprice.jpg"><div class="project-info"><h3>Car price prediction</h3><p>Desarrollo de un modelo de predicción del valor de vehículos de segunda mano. El objetivo es estimar el precio de venta considerando precisión, velocidad de predicción y tiempo de entrenamiento. Para comparar el rendimiento se prueban distintos modelos, como Random Forest, Linear Regression, LGBM, XGBoost y CatBoost, analizando sus ventajas y limitaciones en términos de exactitud y eficiencia.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" class="project-card"><img src="taxi.jpg"><div class="project-info"><h3>Taxi demand prediction</h3><p>Predicción del número de pedidos de taxis por hora en aeropuertos. Su objetivo es anticipar la demanda para mejorar la disponibilidad de taxis en horas pico. El enfoque incluye el pronóstico de series temporales y la generación de características clave que fortalecen la capacidad del modelo para capturar patrones temporales.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" class="project-card"><img src="reviews.jpg"><div class="project-info"><h3>Movie review classification</h3><p>Clasificación automática de reseñas de películas, con el objetivo de identificar si una crítica es positiva o negativa alcanzando un F1 ≥ 0.85. En su desarrollo se utilizan tecnologías como scikit-learn, NLTK, spaCy y LightGBM, complementadas con herramientas de visualización como matplotlib y seaborn para el análisis exploratorio y la interpretación de resultados.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" class="project-card"><img src="face.jpg"><div class="project-info"><h3>Age verification with face recognition</h3><p>Se utiliza reconocimiento facial para predecir la edad de una persona a partir de imágenes. Su objetivo es evitar la venta de alcohol a menores mediante un sistema automatizado que verifica la edad. Las tecnologías empleadas incluyen Python, TensorFlow/Keras, pandas y matplotlib, enfocadas en el procesamiento de imágenes y la creación de modelos de deep learning para la estimación de edad.</p></div></a>
-      <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" class="project-card"><img src="internet.jpg"><div class="project-info"><h3>Internet customers churn prediction</h3><p>Predicción de pérdida de clientes de un servicio de internet. Su objetivo es reducir el churn identificando la probabilidad de cancelación de cada usuario. Para ello se aplican técnicas como el balanceo de clases, la validación cruzada y la optimización de hiperparámetros, lo que permite construir modelos más equilibrados y precisos.</p></div></a>
-      <a href="https://github.com/JesusAntonioL/fwi_equipo_1" class="project-card"><img src="fire.jpg"><div class="project-info"><h3>Wildfire detection and prediction</h3><p>Detección y predicción de incendios forestales. El objetivo es identificar incendios mediante visión computacional y predecir su propagación con el fin de mitigar riesgos. Para ello se emplean tecnologías como APIs ambientales, Google Earth Engine (GEE), MapTiler y leafmap, integrando análisis geoespacial y datos ambientales en un sistema de predicción y monitoreo.</p></div></a>
-      <!-- END USER PROJECTS -->
-    </div>
-  </div>
-
-  <h2 id="skills">Skills</h2>
   <div class="skills-grid">
-  <div class="skill-card">
-    <strong>Lenguajes</strong>
-    <p>Python · SQL · C++ · MATLAB · HTML</p>
+    <div class="skill-card">
+      <strong data-es="Lenguajes" data-en="Languages">Languages</strong>
+      <p>Python · SQL · C++ · MATLAB · HTML</p>
+    </div>
+    <div class="skill-card">
+      <strong data-es="Herramientas" data-en="Tools">Tools</strong>
+      <p>Pandas · NumPy · Scikit-learn · Power BI · GitHub</p>
+    </div>
+    <div class="skill-card">
+      <strong data-es="Idiomas" data-en="Languages">Languages</strong>
+      <p data-es="Inglés B2 · Español nativo"
+         data-en="English B2 · Native Spanish"></p>
+    </div>
   </div>
-  <div class="skill-card">
-    <strong>Herramientas</strong>
-    <p>Pandas · NumPy · Scikit-learn · Power BI · Looker Studio · Matplotlib  · Seaborn · Excel · Office · GitHub · Jupyter · APIs</p>
+
+  <h2 id="contact" data-es="Contacto" data-en="Contact">Contact</h2>
+
+  <div class="contact-box">
+    <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Mexico City, Mexico</div>
+    <div class="contact-item"><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</div>
+    <div class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
+    <div class="contact-item"><i class="fa-brands fa-github"></i> GitHub</div>
   </div>
-  <div class="skill-card">
-    <strong>Idiomas</strong>
-    <p>Inglés B2 (FCE Cambridge) · Español nativo</p>
-  </div>
+
 </div>
-
-<h2 id="contact">Contact</h2>
-<div class="contact-box">
-  <div class="contact-item">
-    <i class="fa-solid fa-location-dot"></i>
-    <span>Nuevo León, México</span>
-  </div>
-
-  <div class="contact-item">
-    <i class="fa-solid fa-envelope"></i>
-    <a href="mailto:samanthalopezvizcarra@gmail.com">
-      samanthalopezvizcarra@gmail.com
-    </a>
-  </div>
-
-  <div class="contact-item">
-    <i class="fa-brands fa-linkedin"></i>
-    <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">
-      linkedin.com/in/samanthalopez-datascientist
-    </a>
-  </div>
-
-  <div class="contact-item">
-    <i class="fa-brands fa-github"></i>
-    <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
-      github.com/Samanthalopezvizcarra
-    </a>
-  </div>
-
-  <div class="contact-item">
-    <i class="fa-solid fa-phone"></i>
-    <span>+52 66 7334 4894</span>
-  </div>
-</div>
-
 
 <footer>© 2025 Samantha López Vizcarra</footer>
 
 <script>
-// Scroll reveal for about and skill boxes
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-},{ threshold: 0.15 });
-document.querySelectorAll('.about-box, .skill-card').forEach(el=>observer.observe(el));
-
-// Projects data (you can replace images/links)
-const projects = [
-  {title:'Mobile plan recommender', img:'mobile-plan.jpg', desc:'Desarrollo de un modelo de clasificación capaz de recomendar el plan telefónico óptimo para cada cliente. Su objetivo es sustituir los planes antiguos y proponer alternativas más adecuadas según las características del usuario. Para lograrlo, se entrenan modelos como Random Forest, Decision Tree y Logistic Regression, comparando su rendimiento para seleccionar la mejor opción.', link:'https://github.com/Samanthalopezvizcarra/mobile-plan-predictor'},
-  {title:'Bank customer churn prediction', img:'bankchurn.jpg', desc:'Detección de clientes con riesgo de abandono en un banco mediante un modelo de predicción de churn. El objetivo es identificar a quienes tienen riesgo de cerrar su cuenta, optimizando el F1 Score. Para enfrentar el desbalance de clases se aplican técnicas como upsampling, uso de class weights y ajuste de umbral, lo que permite mejorar la capacidad del modelo para reconocer casos minoritarios.', link:'https://github.com/Samanthalopezvizcarra/bank-retention-model'},
-  {title:'Oil well profit optimization', img:'oil.jpg', desc:'Se busca seleccionar la región más rentable para abrir 200 nuevos pozos petrolíferos. El objetivo consiste en predecir las reservas estimadas de petróleo y evaluar los beneficios potenciales, asegurando que el riesgo sea menor al 2.5%. El proyecto utiliza tecnologías como Python, pandas, scikit-learn y numpy para realizar el análisis, construir modelos predictivos y evaluar diversas estrategias de selección.', link:'https://github.com/Samanthalopezvizcarra/oil-profit-optimization'},
-  {title:'Gold recovery prediction', img:'gold.jpg', desc:'Predicción de la recuperación de oro en distintas etapas del proceso de purificación, tanto en la fase rougher como en la final. Su objetivo es estimar estos valores para optimizar la eficiencia del proceso. Se emplean técnicas de imputación y escalado, eliminación de anomalías y validación cruzada mediante K-Fold, garantizando un análisis riguroso y modelos de buen desempeño.', link:'https://github.com/Samanthalopezvizcarra/gold-recovery-prediction'},
-  {title:'Car price prediction', img:'carprice.jpg', desc:'Desarrollo de un modelo de predicción del valor de vehículos de segunda mano. El objetivo es estimar el precio de venta considerando precisión, velocidad de predicción y tiempo de entrenamiento. Para comparar el rendimiento se prueban distintos modelos, como Random Forest, Linear Regression, LGBM, XGBoost y CatBoost, analizando sus ventajas y limitaciones en términos de exactitud y eficiencia.', link:'https://github.com/Samanthalopezvizcarra/car-price-prediction'},
-  {title:'Taxi demand prediction', img:'taxi.jpg', desc:'Predicción del número de pedidos de taxis por hora en aeropuertos. Su objetivo es anticipar la demanda para mejorar la disponibilidad de taxis en horas pico. El enfoque incluye el pronóstico de series temporales y la generación de características clave que fortalecen la capacidad del modelo para capturar patrones temporales.', link:'https://github.com/Samanthalopezvizcarra/taxi-demand-prediction'},
-  {title:'Movie review classification', img:'reviews.jpg', desc:'Clasificación automática de reseñas de películas, con el objetivo de identificar si una crítica es positiva o negativa alcanzando un F1 ≥ 0.85. En su desarrollo se utilizan tecnologías como scikit-learn, NLTK, spaCy y LightGBM, complementadas con herramientas de visualización como matplotlib y seaborn para el análisis exploratorio y la interpretación de resultados.', link:'https://github.com/Samanthalopezvizcarra/movie-review-classification'},
-  {title:'Age verification with face recognition', img:'face.jpg', desc:'Se utiliza reconocimiento facial para predecir la edad de una persona a partir de imágenes. Su objetivo es evitar la venta de alcohol a menores mediante un sistema automatizado que verifica la edad. Las tecnologías empleadas incluyen Python, TensorFlow/Keras, pandas y matplotlib, enfocadas en el procesamiento de imágenes y la creación de modelos de deep learning para la estimación de edad.', link:'https://github.com/Samanthalopezvizcarra/age-face-recognition'},
-  {title:'Internet customers churn prediction', img:'internet.jpg', desc:'Predicción de pérdida de clientes de un servicio de internet. Su objetivo es reducir el churn identificando la probabilidad de cancelación de cada usuario. Para ello se aplican técnicas como el balanceo de clases, la validación cruzada y la optimización de hiperparámetros, lo que permite construir modelos más equilibrados y precisos.', link:'https://github.com/Samanthalopezvizcarra/predict-customer-churn'},
-  {title:'Wildfire detection and prediction', img:'fire.jpg', desc:'Detección y predicción de incendios forestales. El objetivo es identificar incendios mediante visión computacional y predecir su propagación con el fin de mitigar riesgos. Para ello se emplean tecnologías como APIs ambientales, Google Earth Engine (GEE), MapTiler y leafmap, integrando análisis geoespacial y datos ambientales en un sistema de predicción y monitoreo.', link:'https://github.com/JesusAntonioL/fwi_equipo_1'}
-];
-
-// build carousel items
-const track = document.getElementById('track');
-function createCard(p){
-  const a = document.createElement('a');
-  a.href = p.link; a.target = '_blank';
-  a.className = 'project-card';
-  a.innerHTML = `<img src="${p.img}" alt="${p.title}">
-    <div class="project-info">
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-    </div>`;
-  return a;
-}
-projects.forEach(p=> track.appendChild(createCard(p)));
-// duplicate for seamless loop
-projects.forEach(p=> track.appendChild(createCard(p)));
-
-// smoother manual controls + auto-scroll with pause on hover
-let pos = 0; const cardWidth = 342; // width + gap approx
-let isHover=false;
-const speed = 0.6; // px per frame for auto scroll
-function step(){
-  if(!isHover){ pos += speed; }
-  if(pos >= track.scrollWidth/2) pos = 0;
-  track.style.transform = `translateX(${-pos}px)`;
-  requestAnimationFrame(step);
-}
-track.parentElement.addEventListener('mouseenter', ()=> isHover=true);
-track.parentElement.addEventListener('mouseleave', ()=> isHover=false);
-requestAnimationFrame(step);
-
-// next/prev buttons (smooth shift)
-document.getElementById('next').addEventListener('click', ()=>{
-  pos += cardWidth; track.style.transition = 'transform .6s cubic-bezier(.22,.9,.29,1)';
-  track.style.transform = `translateX(${-pos}px)`;
-  setTimeout(()=> track.style.transition='none', 650);
-});
-document.getElementById('prev').addEventListener('click', ()=>{
-  pos = Math.max(0, pos - cardWidth); track.style.transition = 'transform .6s cubic-bezier(.22,.9,.29,1)';
-  track.style.transform = `translateX(${-pos}px)`;
-  setTimeout(()=> track.style.transition='none', 650);
-});
-
-// make sure about/skills reveal works
-window.addEventListener('load', ()=>{ document.querySelectorAll('.about-box, .skill-card').forEach(el=> el.classList.add('show')); });
-
-<script>
-let currentLang = localStorage.getItem("lang") || "es";
+let lang = localStorage.getItem("lang") || "es";
 const btn = document.getElementById("langBtn");
 
-function updateLanguage(lang) {
+function setLang(l) {
   document.querySelectorAll("[data-es]").forEach(el => {
-    el.textContent = el.dataset[lang];
+    el.textContent = el.dataset[l];
   });
-  btn.textContent = lang.toUpperCase();
-  localStorage.setItem("lang", lang);
+  btn.textContent = l.toUpperCase();
+  localStorage.setItem("lang", l);
 }
 
-btn.addEventListener("click", () => {
-  currentLang = currentLang === "es" ? "en" : "es";
-  updateLanguage(currentLang);
-});
+btn.onclick = () => {
+  lang = lang === "es" ? "en" : "es";
+  setLang(lang);
+};
 
-updateLanguage(currentLang);
+setLang(lang);
 </script>
 
 </body>
