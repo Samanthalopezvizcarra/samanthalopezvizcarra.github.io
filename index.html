@@ -129,6 +129,28 @@
       text-decoration: underline;
     }
 
+        /* LANGUAGE TOGGLE */
+    .lang-toggle {
+      position: fixed;
+      top: 14px;
+      right: 18px;
+      z-index: 1300;
+    }
+    
+    .lang-toggle button {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    
+    .lang-toggle button:hover {
+      box-shadow: var(--glow);
+    }
+
 
     /* Skills boxes */
     .skills-grid { flex:0.9; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
@@ -180,17 +202,24 @@
 
 <nav>
   <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-es="About" data-en="About Me">About</a></li>
+    <li><a href="#projects" data-es="Projects" data-en="Projects">Projects</a></li>
+    <li><a href="#skills" data-es="Skills" data-en="Skills">Skills</a></li>
+    <li><a href="#contact" data-es="Contact" data-en="Contact">Contact</a></li>
   </ul>
 </nav>
+
+<div class="lang-toggle">
+  <button id="langBtn">EN</button>
+</div>
 
 <header>
   <img src="me.jpg" alt="Samantha" />
   <h1>Samantha López Vizcarra</h1>
-  <p class="lead">Data Scientist Jr</p>
+  <p class="lead" data-es="Data Scientist Jr" data-en="Junior Data Scientist">
+  Data Scientist Jr
+  </p>
+
   <p class="contact">
     <a href="mailto:samanthalopezvizcarra@gmail.com"><i class="fa-solid fa-envelope"></i></a>
     <a href="https://www.linkedin.com/in/samanthalopez-datascientist/"><i class="fa-brands fa-linkedin"></i></a>
@@ -200,12 +229,21 @@
 
 <div class="container">
 
-  <h2 id="about">About Me</h2>
+  <h2 id="about" data-es="Sobre mí" data-en="About Me">About Me</h2>
+
   <div class="two-col">
     <div class="about-box">
-      <p>Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Con conocimientos prácticos y orientados a proyectos en machine learning, análisis y visualización de datos, así como manejo de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean. Mi experiencia previa como desarrolladora de prototipos I+D en el sector biomédico me ha proporcionado habilidades blandas en resolución de problemas complejos, atención al detalle y colaboración en equipos multidisciplinarios. Busco aplicar esta combinación única de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real.
+      <p
+        data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Con conocimientos prácticos y orientados a proyectos en machine learning, análisis y visualización de datos, así como manejo de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean. Mi experiencia previa como desarrolladora de prototipos I+D en el sector biomédico me ha proporcionado habilidades blandas en resolución de problemas complejos, atención al detalle y colaboración en equipos multidisciplinarios. Busco aplicar esta combinación única de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
+        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as proficiency in key tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies. My previous experience as an R&D prototype developer in the biomedical sector has strengthened my soft skills in complex problem-solving, attention to detail, and collaboration in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and develop solutions that create real value."
+      >
+      </p>
     </div>
   </div>
+
+</div>
+
+
   
   <h2 id="projects">Projects</h2>
   <div class="projects-wrapper">
@@ -350,6 +388,24 @@ document.getElementById('prev').addEventListener('click', ()=>{
 // make sure about/skills reveal works
 window.addEventListener('load', ()=>{ document.querySelectorAll('.about-box, .skill-card').forEach(el=> el.classList.add('show')); });
 
+<script>
+let currentLang = localStorage.getItem("lang") || "es";
+const btn = document.getElementById("langBtn");
+
+function updateLanguage(lang) {
+  document.querySelectorAll("[data-es]").forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+  btn.textContent = lang.toUpperCase();
+  localStorage.setItem("lang", lang);
+}
+
+btn.addEventListener("click", () => {
+  currentLang = currentLang === "es" ? "en" : "es";
+  updateLanguage(currentLang);
+});
+
+updateLanguage(currentLang);
 </script>
 
 </body>
