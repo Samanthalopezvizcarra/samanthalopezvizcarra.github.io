@@ -1,258 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samantha López Vizcarra | Data Scientist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samantha López Vizcarra | Data Scientist</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    html, body { overflow-x: hidden; }
+<style>
+html,body{overflow-x:hidden}
+:root{
+--bg:#f7f7f5;
+--card:rgba(255,255,255,.9);
+--text:#1e1e1e;
+--accent:#6b6f76;
+--accent-soft:#8b8f96;
+--shadow:0 8px 22px rgba(16,24,40,.06);
+--glass-border:rgba(0,0,0,.04);
+--glow:0 6px 24px rgba(106,123,255,.12)
+}
+@media(prefers-color-scheme:dark){
+:root{
+--bg:#0f0f0f;
+--card:rgba(25,25,25,.6);
+--text:#e8e8e8;
+--accent:#b4b4b4;
+--accent-soft:#d1d1d1;
+--shadow:0 8px 22px rgba(0,0,0,.4);
+--glass-border:rgba(255,255,255,.04);
+--glow:0 6px 24px rgba(106,123,255,.08)
+}}
 
-    :root {
-      --bg: #f7f7f5;
-      --card: rgba(255,255,255,0.9);
-      --text: #1e1e1e;
-      --accent: #6b6f76;
-      --accent-soft: #8b8f96;
-      --radius: 14px;
-      --shadow: 0 8px 22px rgba(16,24,40,0.06);
-      --glass-border: rgba(0,0,0,0.04);
-      --glow: 0 6px 24px rgba(106,123,255,0.10);
-    }
+body{
+margin:0;
+font-family:Inter,system-ui,sans-serif;
+background:var(--bg);
+color:var(--text);
+scroll-behavior:smooth
+}
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0f0f0f;
-        --card: rgba(25,25,25,0.6);
-        --text: #e8e8e8;
-        --accent: #b4b4b4;
-        --accent-soft: #d1d1d1;
-        --shadow: 0 8px 22px rgba(0,0,0,0.4);
-        --glass-border: rgba(255,255,255,0.04);
-        --glow: 0 6px 24px rgba(106,123,255,0.06);
-      }
-    }
+/* NAV */
+nav{
+position:fixed;
+top:10px;
+left:50%;
+transform:translateX(-50%);
+background:var(--card);
+backdrop-filter:blur(8px);
+padding:8px 18px;
+border-radius:999px;
+z-index:1200;
+border:1px solid var(--glass-border)
+}
+nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+nav a{text-decoration:none;color:var(--text);font-weight:600}
 
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      scroll-behavior: smooth;
-    }
+/* LANGUAGE TOGGLE */
+.lang-toggle{
+position:fixed;
+top:14px;
+right:18px;
+z-index:1300
+}
+.lang-toggle button{
+background:var(--card);
+border:1px solid var(--glass-border);
+border-radius:999px;
+padding:6px 14px;
+font-weight:600;
+cursor:pointer;
+box-shadow:var(--shadow);
+transition:transform .25s,box-shadow .25s
+}
+.lang-toggle button:hover{
+box-shadow:var(--glow);
+transform:translateY(-2px)
+}
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--card);
-      backdrop-filter: blur(8px);
-      padding: 8px 18px;
-      border-radius: 999px;
-      z-index: 1200;
-      border: 1px solid var(--glass-border);
-    }
+/* HEADER */
+header{text-align:center;padding:120px 20px 40px}
+header img{
+width:140px;height:140px;border-radius:18px;
+object-fit:cover;box-shadow:var(--shadow)
+}
+.lead{color:var(--accent-soft)}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 18px;
-      padding: 0;
-      margin: 0;
-    }
+/* LAYOUT */
+.container{width:92%;max-width:1150px;margin:40px auto 80px}
+h2{margin-top:70px}
+.two-col{display:flex;gap:28px}
+@media(max-width:880px){.two-col{flex-direction:column}}
 
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      font-size: .95rem;
-    }
+.card{
+background:var(--card);
+border:1px solid var(--glass-border);
+border-radius:12px;
+padding:22px;
+box-shadow:var(--shadow);
+transition:transform .25s,box-shadow .25s
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--glow)}
 
-    /* LANGUAGE BUTTON */
-    .lang-toggle {
-      position: fixed;
-      top: 14px;
-      right: 18px;
-      z-index: 1300;
-    }
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px
+}
+@media(max-width:880px){.skills-grid{grid-template-columns:1fr}}
 
-    .lang-toggle button {
-      background: var(--card);
-      border: 1px solid var(--glass-border);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-    }
+.skill-card{padding:16px}
 
-    header {
-      text-align: center;
-      padding: 120px 20px 40px;
-    }
+/* PROJECTS */
+.projects-track{
+display:flex;
+gap:22px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:10px
+}
+.project-card{
+width:380px;
+height:260px;
+flex:0 0 auto;
+border-radius:12px;
+overflow:hidden;
+position:relative
+}
+.project-card img{
+width:100%;height:100%;object-fit:cover;
+transition:transform .6s,filter .45s
+}
+.project-info{
+position:absolute;inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:20px;
+color:#fff;
+opacity:0;
+transition:opacity .35s;
+text-shadow:0 2px 8px rgba(0,0,0,.6)
+}
+.project-card:hover img{
+transform:scale(1.06);
+filter:blur(4px) brightness(.55)
+}
+.project-card:hover .project-info{opacity:1}
 
-    header img {
-      width: 140px;
-      height: 140px;
-      border-radius: 18px;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-    }
+/* CONTACT */
+.contact-box{
+max-width:520px;
+margin:20px auto;
+display:flex;
+flex-direction:column;
+gap:14px
+}
+.contact-item{display:flex;gap:12px;align-items:center}
 
-    .lead { color: var(--accent-soft); }
+footer{text-align:center;padding:40px;color:var(--accent)}
 
-    .container {
-      width: 92%;
-      max-width: 1100px;
-      margin: 40px auto 80px;
-    }
-
-    h2 { margin-top: 60px; }
-
-    .two-col { display: flex; gap: 28px; }
-    @media (max-width: 880px) { .two-col { flex-direction: column; } }
-
-    .about-box {
-      background: var(--card);
-      padding: 22px;
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .skills-grid { grid-template-columns: 1fr; }
-    }
-
-    .skill-card {
-      background: var(--card);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-
-    /* CONTACT */
-    .contact-box {
-      max-width: 520px;
-      margin: 20px auto;
-      background: var(--card);
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: var(--accent);
-    }
-  </style>
+/* LANGUAGE FADE */
+.fade{
+animation:fade .35s ease
+}
+@keyframes fade{
+from{opacity:0;transform:translateY(6px)}
+to{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <ul>
-    <li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
-    <li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
-    <li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
-  </ul>
+<ul>
+<li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
+<li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+<li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
+<li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
+</ul>
 </nav>
 
 <div class="lang-toggle">
-  <button id="langBtn">EN</button>
+<button id="langBtn">EN</button>
 </div>
 
 <header>
-  <img src="me.jpg" alt="Samantha">
-  <h1>Samantha López Vizcarra</h1>
-  <p class="lead" data-es="Data Scientist Jr" data-en="Junior Data Scientist">
-    Data Scientist Jr
-  </p>
+<img src="me.jpg" alt="Samantha">
+<h1>Samantha López Vizcarra</h1>
+<p class="lead" data-es="Data Scientist Jr" data-en="Junior Data Scientist">
+Data Scientist Jr
+</p>
 </header>
 
 <div class="container">
 
-  <h2 id="about" data-es="Sobre mí" data-en="About Me">About Me</h2>
+<h2 id="about" data-es="Sobre mí" data-en="About Me">About Me</h2>
+<div class="two-col">
+<div class="card">
+<p data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Con conocimientos prácticos y orientados a proyectos en machine learning, análisis y visualización de datos, así como manejo de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean. Mi experiencia previa como desarrolladora de prototipos I+D en el sector biomédico me ha proporcionado habilidades blandas en resolución de problemas complejos, atención al detalle y colaboración en equipos multidisciplinarios. Busco aplicar esta combinación única de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
+data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as proficiency in key tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies. My previous experience as an R&D prototype developer in the biomedical sector strengthened my problem-solving skills, attention to detail, and ability to collaborate in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and create solutions that generate real value."></p>
+</div>
+</div>
 
-  <div class="two-col">
-    <div class="about-box">
-      <p
-        data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística..."
-        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics...">
-      </p>
-    </div>
-  </div>
+<h2 id="projects" data-es="Proyectos" data-en="Projects">Projects</h2>
+<div class="projects-track">
+<a class="project-card" href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor"><img src="mobile-plan.jpg"><div class="project-info"><h3>Mobile plan recommender</h3><p>Classification model recommending optimal phone plans.</p></div></a>
+<a class="project-card" href="https://github.com/Samanthalopezvizcarra/bank-retention-model"><img src="bankchurn.jpg"><div class="project-info"><h3>Bank churn prediction</h3><p>Customer churn prediction optimizing F1 score.</p></div></a>
+<a class="project-card" href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization"><img src="oil.jpg"><div class="project-info"><h3>Oil profit optimization</h3><p>Region selection with risk constraints.</p></div></a>
+<!-- puedes seguir agregando TODOS los demás aquí igual -->
+</div>
 
-  <h2 id="skills" data-es="Habilidades" data-en="Skills">Skills</h2>
+<h2 id="skills" data-es="Habilidades" data-en="Skills">Skills</h2>
+<div class="skills-grid">
+<div class="card skill-card"><strong>Languages</strong><p>Python · SQL · C++ · MATLAB · HTML</p></div>
+<div class="card skill-card"><strong>Tools</strong><p>Pandas · NumPy · Scikit-learn · Power BI · GitHub</p></div>
+<div class="card skill-card"><strong>Languages</strong><p data-es="Inglés B2 · Español nativo" data-en="English B2 · Native Spanish"></p></div>
+</div>
 
-  <div class="skills-grid">
-    <div class="skill-card">
-      <strong data-es="Lenguajes" data-en="Languages">Languages</strong>
-      <p>Python · SQL · C++ · MATLAB · HTML</p>
-    </div>
-    <div class="skill-card">
-      <strong data-es="Herramientas" data-en="Tools">Tools</strong>
-      <p>Pandas · NumPy · Scikit-learn · Power BI · GitHub</p>
-    </div>
-    <div class="skill-card">
-      <strong data-es="Idiomas" data-en="Languages">Languages</strong>
-      <p data-es="Inglés B2 · Español nativo"
-         data-en="English B2 · Native Spanish"></p>
-    </div>
-  </div>
-
-  <h2 id="contact" data-es="Contacto" data-en="Contact">Contact</h2>
-
-  <div class="contact-box">
-    <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Mexico City, Mexico</div>
-    <div class="contact-item"><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</div>
-    <div class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
-    <div class="contact-item"><i class="fa-brands fa-github"></i> GitHub</div>
-  </div>
+<h2 id="contact" data-es="Contacto" data-en="Contact">Contact</h2>
+<div class="card contact-box">
+<div class="contact-item"><i class="fa-solid fa-location-dot"></i> Mexico City, Mexico</div>
+<div class="contact-item"><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</div>
+<div class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
+<div class="contact-item"><i class="fa-brands fa-github"></i> GitHub</div>
+</div>
 
 </div>
 
 <footer>© 2025 Samantha López Vizcarra</footer>
 
 <script>
-let lang = localStorage.getItem("lang") || "es";
-const btn = document.getElementById("langBtn");
+let lang=localStorage.getItem("lang")||"es";
+const btn=document.getElementById("langBtn");
 
-function setLang(l) {
-  document.querySelectorAll("[data-es]").forEach(el => {
-    el.textContent = el.dataset[l];
-  });
-  btn.textContent = l.toUpperCase();
-  localStorage.setItem("lang", l);
+function setLang(l){
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.classList.remove("fade");
+void el.offsetWidth;
+el.textContent=el.dataset[l];
+el.classList.add("fade");
+});
+btn.textContent=l.toUpperCase();
+localStorage.setItem("lang",l);
 }
 
-btn.onclick = () => {
-  lang = lang === "es" ? "en" : "es";
-  setLang(lang);
-};
-
+btn.onclick=()=>{lang=lang==="es"?"en":"es";setLang(lang)};
 setLang(lang);
 </script>
 
