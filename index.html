@@ -92,6 +92,44 @@
     .about-box:hover { box-shadow: var(--glow); transform: translateY(-4px); }
     .about-box p { margin:0; font-size:1rem; }
 
+        /* CONTACT SECTION */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 520px;
+      margin: 20px auto 0;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    
+    .contact-item i {
+      color: var(--accent);
+      font-size: 1.1rem;
+      width: 22px;
+    }
+    
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    
+    .contact-item a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+
     /* Skills boxes */
     .skills-grid { flex:0.9; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
     @media (max-width:880px) { .skills-grid { grid-template-columns:repeat(1,1fr); } }
@@ -153,7 +191,7 @@
   <img src="me.jpg" alt="Samantha" />
   <h1>Samantha López Vizcarra</h1>
   <p class="lead">Data Scientist Jr</p>
-  <p class="contact" id="contact">
+  <p class="contact">
     <a href="mailto:samanthalopezvizcarra@gmail.com"><i class="fa-solid fa-envelope"></i></a>
     <a href="https://www.linkedin.com/in/samanthalopez-datascientist/"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://github.com/Samanthalopezvizcarra"><i class="fa-brands fa-github"></i></a>
@@ -207,6 +245,41 @@
     <p>Inglés B2 (FCE Cambridge) · Español nativo</p>
   </div>
 </div>
+
+<h2 id="contact">Contact</h2>
+<div class="contact-box">
+  <div class="contact-item">
+    <i class="fa-solid fa-location-dot"></i>
+    <span>Ciudad de México, México</span>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-solid fa-envelope"></i>
+    <a href="mailto:samanthalopezvizcarra@gmail.com">
+      samanthalopezvizcarra@gmail.com
+    </a>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-brands fa-linkedin"></i>
+    <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">
+      linkedin.com/in/samanthalopez-datascientist
+    </a>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-brands fa-github"></i>
+    <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
+      github.com/Samanthalopezvizcarra
+    </a>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-solid fa-phone"></i>
+    <span>+52 55 1234 5678</span>
+  </div>
+</div>
+
 
 <footer>© 2025 Samantha López Vizcarra</footer>
 
