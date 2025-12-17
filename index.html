@@ -700,12 +700,12 @@
         .track {
             display: flex;
             gap: 26px;
-            animation: scroll-left 30s linear infinite;
+            animation: scroll-left 50s linear infinite;
             width: max-content;
         }
 
         .carousel.reverse .track {
-            animation: scroll-right 70s linear infinite;
+            animation: scroll-right 50s linear infinite;
             animation-direction: reverse;
         }
 
@@ -1192,7 +1192,7 @@
             });
         }
 
-        const NAV_OFFSET = document.querySelector('nav').offsetHeight - 100;
+        const NAV_OFFSET = document.querySelector('nav').offsetHeight + 20;
 
 
         document.querySelectorAll('nav a[data-target]').forEach(link => {
