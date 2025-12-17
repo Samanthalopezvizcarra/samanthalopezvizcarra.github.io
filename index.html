@@ -1,365 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Samantha López Vizcarra | Data Scientist</title>
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* =====================
-   THEME + RESET
-===================== */
-:root {
-  --bg: #f6f8fb;
-  --card: #f1f3f6;
-  --text: #111;
-  --muted: #6b7280;
-  --radius: 22px;
-  --shadow: 0 18px 45px rgba(0,0,0,.08);
+:root{
+  --bg:#f6f8fb;
+  --card:#f2f2f2;
+  --text:#111;
+  --muted:#6b7280;
+  --accent:#1800ad;
+  --radius:20px;
+  --shadow:0 18px 45px rgba(0,0,0,.12);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-html { scroll-behavior: auto; }
-
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(240,240,240,.95);
+  backdrop-filter:blur(12px);
+  padding:10px 22px;
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  z-index:1000;
+}
+nav ul{
+  display:flex;
+  gap:18px;
+  list-style:none;
+  align-items:center;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:12px;
+}
+nav a:hover{background:#e5e5e5;}
+.lang-toggle{
+  cursor:pointer;
+  font-weight:700;
+  color:var(--accent);
+  border-left:1px solid #ccc;
+  padding-left:14px;
 }
 
-/* =====================
-   NAVBAR
-===================== */
-nav {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,.85);
-  backdrop-filter: blur(14px);
-  padding: 10px 22px;
-  border-radius: 999px;
-  box-shadow: var(--shadow);
-  z-index: 9999;
+/* SECTIONS */
+section{
+  min-height:100vh;
+  padding:140px 8% 90px;
+  scroll-margin-top:130px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-nav ul {
-  display: flex;
-  gap: 18px;
-  list-style: none;
-  align-items: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-  font-size: .9rem;
-  padding: 6px 10px;
-  border-radius: 10px;
-}
-
-nav a:hover {
-  background: #e5e7eb;
-}
-
-.lang-toggle {
-  cursor: pointer;
-  font-weight: 700;
-  color: var(--muted);
-  border-left: 1px solid #ddd;
-  padding-left: 14px;
-}
-
-/* =====================
-   SECTIONS
-===================== */
-section {
-  min-height: 100vh;
-  padding: 120px 8% 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* =====================
-   MOBILE BASE
-===================== */
-@media (max-width: 768px) {
-  section {
-    min-height: 100svh;
-    padding: 110px 6% 70px;
-  }
-
-  nav a {
-    font-size: .82rem;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav>
-  <ul>
-    <li><a href="#" data-target="about">About</a></li>
-    <li><a href="#" data-target="projects">Projects</a></li>
-    <li><a href="#" data-target="skills">Skills</a></li>
-    <li><a href="#" data-target="contact">Contact</a></li>
-    <li class="lang-toggle" id="langBtn">EN</li>
-  </ul>
-</nav>
-
-<script>
-/* SCROLL FIX */
-const NAV_OFFSET = 90;
-document.querySelectorAll('nav a[data-target]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.getElementById(link.dataset.target);
-    if (!target) return;
-    const y = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  });
-});
-</script>
-
-<!-- HERO -->
-<section class="hero" id="home" style="
+/* HERO */
+.hero{
   background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url('me.jpg') center/cover no-repeat;
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url("me.jpg") center/cover no-repeat;
   text-align:center;
-  color:white;">
-  
-  <h1 style="font-size:clamp(2.4rem,5vw,4rem)">Samantha López Vizcarra</h1>
-  <p style="margin-top:12px;color:#d1d5db">Junior Data Scientist</p>
-
-  <a href="#" data-target="contact" style="
-    margin-top:30px;
-    display:inline-block;
-    padding:14px 30px;
-    background:white;
-    color:black;
-    border-radius:999px;
-    font-weight:600;
-    text-decoration:none;">
-    Contact me
-  </a>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center;">
-    <img src="about.jpg" style="width:100%;max-width:420px;border-radius:24px;box-shadow:var(--shadow)">
-    <div>
-      <h2 style="font-size:2.3rem;margin-bottom:18px">About Me</h2>
-      <p>
-        I am a Junior Data Scientist with a strong background in mathematics,
-        programming and statistics. Certified by TripleTen and fluent in English (B2).
-      </p>
-      <p style="margin-top:14px">
-        I focus on building data-driven solutions using machine learning,
-        analytics and visualization tools.
-      </p>
-    </div>
-  </div>
-</section>
-
-<style>
-@media(max-width:768px){
-  #about > div{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-  #about img{margin:0 auto}
+  color:white;
 }
-</style>
+.hero h1{font-size:clamp(2.5rem,5vw,4rem);}
+.hero p{margin-top:12px;font-size:1.25rem;color:#ddd;}
+.hero a{
+  margin-top:28px;
+  display:inline-block;
+  padding:14px 32px;
+  background:white;
+  color:black;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+}
 
-<section id="projects">
-<h2 style="text-align:center;font-size:2.4rem;margin-bottom:40px">Projects</h2>
+/* FADE */
+.fade{opacity:0;transform:translateY(24px);transition:.6s;}
+.fade.show{opacity:1;transform:none;}
 
-<div class="carousel">
-  <div class="track">
-    <!-- DUPLICA ESTE BLOQUE PARA LOOP -->
-    <div class="project-card"><img src="mobile-plan.jpg"></div>
-    <div class="project-card"><img src="bankchurn.jpg"></div>
-    <div class="project-card"><img src="oil.jpg"></div>
-    <div class="project-card"><img src="gold.jpg"></div>
-    <div class="project-card"><img src="carprice.jpg"></div>
+/* ABOUT */
+#about>div{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:60px;
+  align-items:center;
+}
+#about img{
+  width:100%;
+  max-width:420px;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
 
-    <div class="project-card"><img src="mobile-plan.jpg"></div>
-    <div class="project-card"><img src="bankchurn.jpg"></div>
-    <div class="project-card"><img src="oil.jpg"></div>
-    <div class="project-card"><img src="gold.jpg"></div>
-    <div class="project-card"><img src="carprice.jpg"></div>
-  </div>
-</div>
+/* PROJECTS */
+.projects-header{
+  position:relative;
+  text-align:center;
+  margin-bottom:40px;
+}
+.project-controls{
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  gap:16px;
+}
+.project-controls button{
+  background:transparent;
+  border:none;
+  font-size:2rem;
+  cursor:pointer;
+}
 
-<div style="height:50px"></div>
-
-<div class="carousel reverse">
-  <div class="track">
-    <div class="project-card"><img src="taxi.jpg"></div>
-    <div class="project-card"><img src="reviews.jpg"></div>
-    <div class="project-card"><img src="face.jpg"></div>
-    <div class="project-card"><img src="internet.jpg"></div>
-    <div class="project-card"><img src="fire.jpg"></div>
-
-    <div class="project-card"><img src="taxi.jpg"></div>
-    <div class="project-card"><img src="reviews.jpg"></div>
-    <div class="project-card"><img src="face.jpg"></div>
-    <div class="project-card"><img src="internet.jpg"></div>
-    <div class="project-card"><img src="fire.jpg"></div>
-  </div>
-</div>
-</section>
-
-<style>
 .carousel{
-  width:100vw;
   overflow:hidden;
+  width:100vw;
   margin-left:calc(-50vw + 50%);
 }
 .track{
   display:flex;
   gap:26px;
-  animation:scroll 60s linear infinite;
+  width:max-content;
+  animation:scroll-left 70s linear infinite;
 }
 .carousel.reverse .track{
-  animation:scroll-rev 60s linear infinite;
+  animation:scroll-right 70s linear infinite;
 }
 .carousel:hover .track{
   animation-play-state:paused;
 }
+
 .project-card{
   min-width:360px;
-  height:220px;
-  border-radius:20px;
+  height:240px;
+  border-radius:18px;
   overflow:hidden;
+  position:relative;
   box-shadow:var(--shadow);
 }
 .project-card img{
   width:100%;
   height:100%;
   object-fit:cover;
+  transition:.6s;
 }
-@keyframes scroll{
-  to{transform:translateX(-50%)}
+.project-card .info{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:22px;
+  opacity:0;
+  transition:.4s;
 }
-@keyframes scroll-rev{
-  from{transform:translateX(-50%)}
-  to{transform:translateX(0)}
+.project-card:hover img{
+  transform:scale(1.08);
+  filter:blur(3px);
 }
-@media(max-width:768px){
-  .project-card{min-width:260px;height:180px}
+.project-card:hover .info{opacity:1;}
+
+@keyframes scroll-left{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
 }
-</style>
+@keyframes scroll-right{
+  from{transform:translateX(-50%);}
+  to{transform:translateX(0);}
+}
 
-<section id="skills">
-<h2 style="text-align:center;font-size:2.4rem;margin-bottom:50px">Skills</h2>
-
-<div class="grid">
-  <div class="card">
-    <h3><i class="fa-solid fa-code"></i> Languages</h3>
-    <ul>
-      <li><img src="python.png"> Python</li>
-      <li><img src="sql.png"> SQL</li>
-      <li><img src="c.png"> C++</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3><i class="fa-solid fa-chart-line"></i> Tools</h3>
-    <ul>
-      <li>Scikit-learn</li>
-      <li>Power BI</li>
-      <li>Looker Studio</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3><i class="fa-solid fa-language"></i> Languages</h3>
-    <ul>
-      <li>Spanish — Native</li>
-      <li>English — B2</li>
-    </ul>
-  </div>
-</div>
-</section>
-
-<style>
+/* CARDS (SKILLS + CONTACT) */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
   max-width:1100px;
-  margin:auto;
+  margin:0 auto;
 }
 .card{
   background:var(--card);
   padding:30px;
-  border-radius:var(--radius);
+  border-radius:22px;
   box-shadow:var(--shadow);
 }
-.card ul{
-  list-style:none;
-  margin-top:12px;
+.card i{color:#555;}
+
+/* CONTACT */
+#contact{
+  background:var(--bg);
 }
-.card li{
+#contact a{color:#555;text-decoration:none;}
+#contact a:hover{color:black;}
+
+/* MOBILE */
+@media(max-width:900px){
+  section{padding:130px 6% 80px;}
+  #about>div{grid-template-columns:1fr;text-align:center;}
+  .project-card{min-width:260px;height:180px;}
+  .project-controls{position:static;transform:none;margin-top:20px;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================
+     NAVBAR
+===================== -->
+<nav>
+  <ul>
+    <li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
+    <li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+    <li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
+    <li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
+    <li class="lang-toggle" id="langBtn">EN</li>
+  </ul>
+</nav>
+
+<!-- =====================
+     HERO
+===================== -->
+<section class="hero fade show" id="home">
+  <h1>Samantha López Vizcarra</h1>
+  <p data-es="Data Scientist Jr" data-en="Junior Data Scientist">
+    Data Scientist Jr
+  </p>
+
+  <a href="#contact" data-es="Contáctame" data-en="Contact me">
+    Contact me
+  </a>
+</section>
+
+<!-- =====================
+     ABOUT
+===================== -->
+<section id="about" class="fade">
+  <div>
+
+    <!-- FOTO -->
+    <div>
+      <img src="about.jpg" alt="About Samantha">
+    </div>
+
+    <!-- TEXTO -->
+    <div>
+      <h2 data-es="Sobre mí" data-en="About Me"
+          style="font-size:2.4rem;margin-bottom:20px;">
+        About Me
+      </h2>
+
+      <p
+        data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Tengo experiencia práctica en machine learning, análisis y visualización de datos, así como dominio de herramientas como Python, SQL, Power BI y Looker Studio."
+        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on experience in machine learning, data analysis, and data visualization, as well as strong proficiency in tools such as Python, SQL, Power BI, and Looker Studio."
+        style="margin-bottom:16px;font-size:1.05rem;">
+      </p>
+
+      <p
+        data-es="Mi experiencia previa como desarrolladora de prototipos de I+D en el sector biomédico fortaleció mis habilidades en resolución de problemas complejos, atención al detalle y trabajo colaborativo. Busco aplicar esta combinación de ciencia de datos e ingeniería para crear soluciones con impacto real."
+        data-en="My previous experience as an R&D prototype developer in the biomedical sector strengthened my skills in complex problem-solving, attention to detail, and collaborative work. I seek to apply this combination of data science and engineering to create solutions with real impact."
+        style="font-size:1.05rem;">
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     PROJECTS
+===================== -->
+<section id="projects" class="fade">
+
+  <div class="projects-header">
+    <h2 data-es="Proyectos" data-en="Projects">Projects</h2>
+
+    <div class="project-controls">
+      <button id="prev">◀</button>
+      <button id="next">▶</button>
+    </div>
+  </div>
+
+  <!-- ===== CARRUSEL 1 ===== -->
+  <div class="carousel">
+    <div class="track">
+
+      <!-- DUPLICA ESTE BLOQUE COMPLETO 2 VECES PARA LOOP INFINITO -->
+      <!-- 1 -->
+      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank" class="project-card">
+        <img src="mobile-plan.jpg">
+        <div class="info">
+          <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender"></h3>
+        </div>
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank" class="project-card">
+        <img src="bankchurn.jpg">
+        <div class="info">
+          <h3 data-es="Churn bancario" data-en="Bank churn prediction"></h3>
+        </div>
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank" class="project-card">
+        <img src="oil.jpg">
+        <div class="info">
+          <h3 data-es="Optimización petrolera" data-en="Oil optimization"></h3>
+        </div>
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank" class="project-card">
+        <img src="gold.jpg">
+        <div class="info">
+          <h3 data-es="Recuperación de oro" data-en="Gold recovery"></h3>
+        </div>
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank" class="project-card">
+        <img src="carprice.jpg">
+        <div class="info">
+          <h3 data-es="Precio de autos" data-en="Car price prediction"></h3>
+        </div>
+      </a>
+
+      <!-- COPIA EXACTA PARA LOOP -->
+      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank" class="project-card">
+        <img src="mobile-plan.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank" class="project-card">
+        <img src="bankchurn.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank" class="project-card">
+        <img src="oil.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank" class="project-card">
+        <img src="gold.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank" class="project-card">
+        <img src="carprice.jpg">
+      </a>
+
+    </div>
+  </div>
+
+  <div style="height:70px"></div>
+
+  <!-- ===== CARRUSEL 2 (OPUESTO) ===== -->
+  <div class="carousel reverse">
+    <div class="track">
+
+      <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank" class="project-card">
+        <img src="taxi.jpg">
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank" class="project-card">
+        <img src="reviews.jpg">
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank" class="project-card">
+        <img src="face.jpg">
+      </a>
+
+      <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank" class="project-card">
+        <img src="internet.jpg">
+      </a>
+
+      <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
+        <img src="fire.jpg">
+      </a>
+
+      <!-- DUPLICADO PARA LOOP -->
+      <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank" class="project-card">
+        <img src="taxi.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank" class="project-card">
+        <img src="reviews.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank" class="project-card">
+        <img src="face.jpg">
+      </a>
+      <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank" class="project-card">
+        <img src="internet.jpg">
+      </a>
+      <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
+        <img src="fire.jpg">
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================
+     SKILLS
+===================== -->
+<section id="skills" class="fade">
+
+  <h2 data-es="Habilidades" data-en="Skills"
+    style="font-size:2.4rem;text-align:center;margin-bottom:60px;">
+    Skills
+  </h2>
+
+  <div class="skills-grid">
+
+    <!-- LENGUAJES -->
+    <div class="skill-card glass-card">
+      <h3><i class="fa-solid fa-code"></i> Lenguajes</h3>
+      <ul>
+        <li><img src="python.png"> Python</li>
+        <li><img src="sql.png"> SQL</li>
+        <li><img src="cpp.png"> C++</li>
+        <li><img src="matlab.png"> MATLAB</li>
+      </ul>
+    </div>
+
+    <!-- HERRAMIENTAS -->
+    <div class="skill-card glass-card">
+      <h3><i class="fa-solid fa-toolbox"></i> Herramientas</h3>
+      <ul>
+        <li><img src="pandas.png"> Pandas / NumPy</li>
+        <li><img src="sklearn.png"> Scikit-Learn</li>
+        <li><img src="powerbi.png"> Power BI</li>
+        <li><img src="looker.png"> Looker Studio</li>
+      </ul>
+    </div>
+
+    <!-- IDIOMAS -->
+    <div class="skill-card glass-card">
+      <h3><i class="fa-solid fa-language"></i> Idiomas</h3>
+      <ul>
+        <li><strong>Español:</strong> Nativo</li>
+        <li><strong>English:</strong> B2</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     CONTACT
+===================== -->
+<section id="contact" class="fade">
+
+  <h2 data-es="Contacto" data-en="Contact"
+    style="font-size:2.4rem;text-align:center;margin-bottom:60px;">
+    Contact
+  </h2>
+
+  <div class="contact-grid">
+
+    <div class="contact-card glass-card">
+      <p><i class="fa-solid fa-location-dot"></i> México</p>
+      <p><i class="fa-solid fa-envelope"></i>
+        <a href="mailto:samanthalopezvizcarra@gmail.com">
+          samanthalopezvizcarra@gmail.com
+        </a>
+      </p>
+      <p><i class="fa-solid fa-phone"></i> +52 1 000 000 0000</p>
+    </div>
+
+    <div class="contact-card glass-card">
+      <p><i class="fa-brands fa-github"></i>
+        <a href="https://github.com/Samanthalopezvizcarra" target="_blank">GitHub</a>
+      </p>
+      <p><i class="fa-brands fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">LinkedIn</a>
+      </p>
+      <p><i class="fa-solid fa-file-pdf"></i>
+        <a href="https://docs.google.com/document/d/1zCNHB7ACw_Lnq2W0c3g8M57k1Qe7CPQH/edit"
+          target="_blank">View CV</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.skills-grid,
+.contact-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.skill-card ul li,
+.contact-card p {
   display:flex;
   align-items:center;
-  gap:10px;
-  margin-bottom:8px;
+  gap:12px;
 }
-.card img{
+
+.skill-card img {
   width:22px;
+  height:22px;
+}
+
+.skill-card i,
+.contact-card i {
+  color:#777;
+}
+
+@media(max-width:900px){
+  .skills-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 
-<section id="contact">
-<h2 style="text-align:center;font-size:2.4rem;margin-bottom:50px">Contact</h2>
-
-<div class="grid">
-  <div class="card">
-    <p><i class="fa-solid fa-location-dot"></i> Mexico</p>
-    <p><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</p>
-    <p><i class="fa-solid fa-phone"></i> +52 1 000 000 0000</p>
-  </div>
-
-  <div class="card">
-    <p><i class="fa-brands fa-github"></i> GitHub</p>
-    <p><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
-    <p><i class="fa-solid fa-file"></i> View CV</p>
-  </div>
-</div>
-</section>
-
-<footer style="text-align:center;padding:30px;color:#6b7280">
-© 2025 Samantha López Vizcarra
-</footer>
-
 <script>
-/* LANG TOGGLE */
-let lang='en';
-document.getElementById('langBtn').onclick=()=>{
-  lang=lang==='en'?'es':'en';
-  document.getElementById('langBtn').textContent=lang.toUpperCase();
+/* NAVBAR SCROLL FIX */
+const NAV_OFFSET = document.querySelector("nav").offsetHeight + 20;
+
+document.querySelectorAll("nav a[data-target]").forEach(link=>{
+  link.onclick=e=>{
+    e.preventDefault();
+    const target=document.getElementById(link.dataset.target);
+    const y=target.getBoundingClientRect().top+window.pageYOffset-NAV_OFFSET;
+    window.scrollTo({top:y,behavior:"smooth"});
+  };
+});
+
+/* PAUSE CAROUSELS */
+document.querySelectorAll(".carousel").forEach(c=>{
+  c.addEventListener("mouseenter",()=>c.querySelector(".track").style.animationPlayState="paused");
+  c.addEventListener("mouseleave",()=>c.querySelector(".track").style.animationPlayState="running");
+});
+
+/* LANGUAGE */
+let lang="en";
+langBtn.onclick=()=>{
+  lang=lang==="en"?"es":"en";
+  langBtn.textContent=lang.toUpperCase();
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.textContent=el.dataset[lang];
+  });
 };
 </script>
-
-</body>
-</html>
