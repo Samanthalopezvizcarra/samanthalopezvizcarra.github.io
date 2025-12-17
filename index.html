@@ -47,7 +47,7 @@
         }
 
         section {
-            scroll-margin-top: 100px;
+            scroll-margin-top: 140px;
         }
 
         /* =====================
@@ -322,13 +322,6 @@
             </div>
         </div>
 
-
-        <div style="text-align:center; margin-bottom:20px;">
-            <button onclick="scrollProjects(-1)">◀</button>
-            <button onclick="scrollProjects(1)">▶</button>
-        </div>
-
-
         <!-- ===== CARRUSEL 1 ===== -->
         <div class="carousel">
             <div class="track">
@@ -449,7 +442,7 @@
         <div style="height:50px;"></div>
 
         <!-- ===== CARRUSEL 2 ===== -->
-        <div class="carousel">
+        <div class="carousel reverse">
             <div class="track">
 
                 <!-- PROJECT CARD -->
@@ -633,15 +626,15 @@
             margin-left: calc(-50vw + 50%);
         }
 
-        .carousel.reverse .track {
-            animation-direction: reverse;
-        }
-
 
         .track {
             display: flex;
             gap: 26px;
-            animation: scroll 70s linear infinite;
+            animation: scroll-left 70s linear infinite;
+        }
+
+        .carousel.reverse .track {
+            animation: scroll-right 70s linear infinite;
         }
 
         .project-card {
@@ -701,17 +694,6 @@
                 transform: translateX(0);
             }
         }
-
-        .track {
-            display: flex;
-            gap: 26px;
-            animation: scroll-left 70s linear infinite;
-        }
-
-        .carousel.reverse .track {
-            animation: scroll-right 70s linear infinite;
-        }
-
 
         @media (max-width: 700px) {
             .project-card {
@@ -796,15 +778,12 @@
 
 
         .skill-card {
-            background: linear-gradient(135deg,
-                    #ffffff,
-                    #f0f4ff);
+            background: #ffffff;
             padding: 30px;
             border-radius: 22px;
             box-shadow: var(--shadow);
             transition: transform .3s ease, box-shadow .3s ease;
         }
-
 
         .skill-card:hover {
             transform: translateY(-6px);
@@ -817,7 +796,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--accent);
+            color: var(--muted);
         }
 
         .skill-card ul {
@@ -831,10 +810,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #111111;
+            font-weight: 500;
         }
 
         .skill-card i {
-            color: var(--accent);
+            color: var(--muted);
         }
 
         .skill-card ul li img {
@@ -967,7 +948,7 @@
         }
 
         .contact-card a {
-            color: var(--accent);
+            color: var(--muted);
             text-decoration: none;
             font-weight: 600;
         }
@@ -1025,6 +1006,12 @@
                 });
             });
         }
+
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+
+        prevBtn.addEventListener('click', () => scrollProjects(-1));
+        nextBtn.addEventListener('click', () => scrollProjects(1));
 
     </script>
 
