@@ -46,10 +46,6 @@
             overflow-x: hidden;
         }
 
-        section {
-            scroll-margin-top: 140px;
-        }
-
         /* =====================
    CARDS
 ===================== */
@@ -213,6 +209,80 @@
 
             nav {
                 width: max-content;
+            }
+        }
+
+        /* =====================
+   MOBILE FIXES
+===================== */
+        @media (max-width: 900px) {
+
+            /* NAVBAR */
+            nav {
+                top: 10px;
+                padding: 8px 14px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 6px 8px;
+            }
+
+            /* SECTIONS */
+            section {
+                min-height: auto;
+                padding: 120px 6% 80px;
+            }
+
+            /* HERO */
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            /* ABOUT */
+            #about>div {
+                grid-template-columns: 1fr !important;
+                gap: 30px;
+                text-align: center;
+            }
+
+            #about img {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            /* PROJECTS */
+            .projects-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .project-controls {
+                position: static;
+            }
+
+            .project-card {
+                min-width: 260px;
+                height: 180px;
+            }
+
+            /* SKILLS */
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* CONTACT */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
     </style>
@@ -615,6 +685,11 @@
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
         }
 
+        .carousel:hover .track {
+            animation-play-state: paused;
+        }
+
+
 
         .carousel {
             overflow: hidden;
@@ -1012,6 +1087,24 @@
 
         prevBtn.addEventListener('click', () => scrollProjects(-1));
         nextBtn.addEventListener('click', () => scrollProjects(1));
+
+
+        const NAV_OFFSET = 140;
+
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (!target) return;
+
+                const y = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+
+                window.scrollTo({
+                    top: y,
+                    behavior: 'smooth'
+                });
+            });
+        });
 
     </script>
 
