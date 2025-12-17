@@ -21,11 +21,12 @@
             --card: rgba(255, 255, 255, 0.85);
             --text: #1c1e21;
             --muted: #6b7280;
-            --accent: #7c9cff;
+            --accent: #1800ad;
             --accent-soft: #dbe4ff;
             --radius: 16px;
             --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
         }
+
 
         * {
             box-sizing: border-box;
@@ -42,7 +43,13 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        section {
+            scroll-margin-top: 140px;
+        }
+
 
         /* =====================
    NAVBAR
@@ -169,6 +176,21 @@
 
             section {
                 padding: 110px 6% 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .track {
+                animation-duration: 90s;
+            }
+
+            .carousel {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            nav {
+                width: max-content;
             }
         }
     </style>
@@ -396,6 +418,8 @@
             </div>
         </div>
 
+        <div style="height:50px;"></div>
+
         <!-- ===== CARRUSEL 2 ===== -->
         <div class="carousel">
             <div class="track">
@@ -518,6 +542,25 @@
      PROJECTS STYLES
 ===================== -->
     <style>
+        .carousel-btn {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 10px;
+            box-shadow: var(--shadow);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+        }
+
+
         .carousel {
             overflow: hidden;
             width: 100%;
@@ -577,7 +620,7 @@
             opacity: 1;
         }
 
-        @keyframes scroll {
+        @keyframes scroll-left {
             from {
                 transform: translateX(0);
             }
@@ -586,6 +629,27 @@
                 transform: translateX(-50%);
             }
         }
+
+        @keyframes scroll-right {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .track {
+            display: flex;
+            gap: 26px;
+            animation: scroll-left 70s linear infinite;
+        }
+
+        .carousel.reverse .track {
+            animation: scroll-right 70s linear infinite;
+        }
+
 
         @media (max-width: 700px) {
             .project-card {
@@ -617,6 +681,7 @@
                     <li><i class="fa-solid fa-c"></i> C++</li>
                     <li><i class="fa-solid fa-chart-line"></i> MATLAB</li>
                     <li><i class="fa-brands fa-html5"></i> HTML</li>
+                    <li><img src="python.png" alt="Python">Pythonnnn</li>
                 </ul>
             </div>
 
@@ -631,34 +696,6 @@
                     <li>Machine Learning</li>
                     <li>Time Series</li>
                     <li>Deep Learning (Keras / TensorFlow)</li>
-                </ul>
-            </div>
-
-            <!-- VISUALIZATION -->
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-chart-pie"></i>
-                    <span data-es="Visualización" data-en="Visualization">Visualization</span>
-                </h3>
-                <ul>
-                    <li>Power BI</li>
-                    <li>Looker Studio</li>
-                    <li>Matplotlib</li>
-                    <li>Seaborn</li>
-                    <li>Dashboards</li>
-                </ul>
-            </div>
-
-            <!-- TOOLS -->
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-toolbox"></i>
-                    <span data-es="Herramientas" data-en="Tools">Tools</span>
-                </h3>
-                <ul>
-                    <li>Git · GitHub</li>
-                    <li>Jupyter Notebook</li>
-                    <li>APIs</li>
-                    <li>Excel · Office</li>
-                    <li>Lean methodologies</li>
                 </ul>
             </div>
 
@@ -709,7 +746,7 @@
 
         .skill-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(124, 156, 255, 0.25);
+            box-shadow: 0 18px 40px rgba(138, 143, 160, 0.25);
         }
 
         .skill-card h3 {
@@ -736,6 +773,12 @@
 
         .skill-card i {
             color: var(--accent);
+        }
+
+        .skill-card ul li img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
     </style>
 
@@ -804,7 +847,7 @@
         }
 
         #contact a {
-            color: #7c9cff;
+            color: #000000;
         }
     </style>
 
@@ -825,11 +868,27 @@
         }
 
         .contact-card {
-            background: var(--card);
+            background: #ffffff;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 22px;
             box-shadow: var(--shadow);
+            transition: transform .35s ease, box-shadow .35s ease;
         }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-card i {
+            color: #6b7280;
+        }
+
+        .contact-card a {
+            color: #111111;
+            font-weight: 600;
+        }
+
 
         .contact-card p {
             font-size: 1.05rem;
