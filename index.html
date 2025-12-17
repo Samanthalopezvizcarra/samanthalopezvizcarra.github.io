@@ -1,1707 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samantha López Vizcarra | Data Scientist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samantha López Vizcarra | Data Scientist</title>
 
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        /* =====================
-   VARIABLES / THEME
+<style>
+/* =====================
+   THEME + RESET
 ===================== */
+:root {
+  --bg: #f6f8fb;
+  --card: #f1f3f6;
+  --text: #111;
+  --muted: #6b7280;
+  --radius: 22px;
+  --shadow: 0 18px 45px rgba(0,0,0,.08);
+}
 
-        :root {
-            --bg: #f6f8fb;
-            --card: rgba(255, 255, 255, 0.85);
-            --text: #1c1e21;
-            --muted: #6b7280;
-            --accent: #1800ad;
-            --accent-soft: #dbe4ff;
-            --radius: 16px;
-            --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html { scroll-behavior: auto; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* =====================
-   CARDS
-===================== */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(14px);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.08),
-                0 0 0 rgba(0, 0, 0, 0);
-            transition: transform .3s ease, box-shadow .3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.12),
-                0 0 40px rgba(0, 0, 0, 0.08);
-        }
-
-
-
-        /* =====================
+/* =====================
    NAVBAR
 ===================== */
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--card);
-            backdrop-filter: blur(12px);
-            padding: 10px 20px;
-            border-radius: 999px;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-        }
+nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(14px);
+  padding: 10px 22px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  z-index: 9999;
+}
 
-        nav ul {
-            display: flex;
-            gap: 18px;
-            list-style: none;
-            align-items: center;
-        }
+nav ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  align-items: center;
+}
 
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 6px 10px;
-            border-radius: 10px;
-        }
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: .9rem;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
 
-        nav a:hover {
-            background: var(--accent-soft);
-        }
+nav a:hover {
+  background: #e5e7eb;
+}
 
-        /* LANGUAGE TOGGLE */
-        .lang-toggle {
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--accent);
-            border-left: 1px solid #ddd;
-            padding-left: 14px;
-        }
+.lang-toggle {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--muted);
+  border-left: 1px solid #ddd;
+  padding-left: 14px;
+}
 
-        /* =====================
+/* =====================
    SECTIONS
 ===================== */
-        section {
-            min-height: 100vh;
-            padding: 110px 8% 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+section {
+  min-height: 100vh;
+  padding: 120px 8% 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-        /* =====================
-   HERO
+/* =====================
+   MOBILE BASE
 ===================== */
-        .hero {
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.75),
-                    rgba(0, 0, 0, 0.75)),
-                url("me.jpg") center/cover no-repeat;
-            text-align: center;
-            color: white;
-        }
+@media (max-width: 768px) {
+  section {
+    min-height: 100svh;
+    padding: 110px 6% 70px;
+  }
 
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-        }
-
-        .hero p {
-            margin-top: 12px;
-            font-size: 1.25rem;
-            color: var(--muted);
-        }
-
-        .hero .cta {
-            margin-top: 28px;
-        }
-
-        .hero .cta a {
-            display: inline-block;
-            padding: 14px 30px;
-            background: var(--accent);
-            color: white;
-            border-radius: 999px;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-            transition: transform .25s ease;
-        }
-
-        .hero .cta a:hover {
-            transform: translateY(-3px);
-        }
-
-        /* =====================
-   FADE ANIMATION
-===================== */
-        .fade {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity .8s ease, transform .8s ease;
-        }
-
-
-        .fade.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =====================
-   RESPONSIVE
-===================== */
-        @media (max-width: 900px) {
-            nav ul {
-                gap: 12px;
-            }
-
-            section {
-                padding: 110px 6% 80px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .track {
-                animation-duration: 90s;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            nav {
-                width: max-content;
-            }
-        }
-
-        /* =====================
-   MOBILE FIXES
-===================== */
-        @media (max-width: 900px) {
-
-            /* NAVBAR */
-            nav {
-                top: 10px;
-                padding: 8px 14px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                font-size: 0.85rem;
-                padding: 6px 8px;
-            }
-
-            /* SECTIONS */
-            section {
-                min-height: auto;
-                padding: 120px 6% 80px;
-            }
-
-            /* HERO */
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            /* ABOUT */
-            #about>div {
-                grid-template-columns: 1fr !important;
-                gap: 30px;
-                text-align: center;
-            }
-
-            #about img {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .project-card {
-                min-width: 260px;
-                height: 180px;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
+  nav a {
+    font-size: .82rem;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- =====================
-     NAVBAR
-===================== -->
-    <nav>
-        <ul>
-            <li><a href="#" data-target="about" data-es="Sobre mí" data-en="About">About</a></li>
-            <li><a href="#" data-target="projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
-            <li><a href="#" data-target="skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
-            <li><a href="#" data-target="contact" data-es="Contacto" data-en="Contact">Contact</a></li>
-            <li class="lang-toggle" id="langBtn">EN</li>
-        </ul>
-    </nav>
-
-
-    <!-- =====================
-     HERO
-===================== -->
-    <section class="hero fade show" id="home">
-        <h1>Samantha López Vizcarra</h1>
-        <p data-es="Data Scientist Jr" data-en="Junior Data Scientist">
-            Data Scientist Jr
-        </p>
-
-        <div class="cta">
-            <a href="#contact" data-es="Contáctame" data-en="Contact me">
-                Contact me
-            </a>
-        </div>
-    </section>
-
-    <!-- =====================
-     ABOUT ME
-===================== -->
-    <section id="about" class="fade">
-        <div style="
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
-    align-items: center;
-  ">
-
-            <!-- FOTO -->
-            <div>
-                <img src="about.jpg" alt="About Samantha" style="
-             width: 100%;
-             max-width: 420px;
-             border-radius: 24px;
-             box-shadow: var(--shadow);
-           ">
-            </div>
-
-            <!-- TEXTO -->
-            <div>
-                <h2 data-es="Sobre mí" data-en="About Me" style="font-size: 2.2rem; margin-bottom: 18px;">
-                    About Me
-                </h2>
-
-                <p data-es="Soy recién egresada de Ingeniería Mecatrónica con una sólida base en matemáticas, programación y estadística. Soy Data Scientist Jr certificada por el bootcamp intensivo de TripleTen y cuento con un nivel de inglés B2. Tengo experiencia práctica y orientada a proyectos en machine learning, análisis y visualización de datos, así como dominio de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean."
-                    data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as strong proficiency in tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies."
-                    style="margin-bottom: 16px; font-size: 1.05rem;">
-                    I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics,
-                    programming, and statistics...
-                </p>
-
-                <p data-es="Mi experiencia previa como desarrolladora de prototipos de I+D en el sector biomédico fortaleció mis habilidades blandas, incluyendo la resolución de problemas complejos, la atención al detalle y el trabajo colaborativo en equipos multidisciplinarios. Busco aplicar esta combinación de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
-                    data-en="My previous experience as an R&D prototype developer in the biomedical sector strengthened my soft skills, including complex problem-solving, attention to detail, and collaboration in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and develop solutions that create real value."
-                    style="font-size: 1.05rem;">
-                    My previous experience as an R&D prototype developer in the biomedical sector strengthened my soft
-                    skills...
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- RESPONSIVE ABOUT -->
-    <style>
-        @media (max-width: 900px) {
-            #about>div {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            #about img {
-                margin: 0 auto 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
-
-    <!-- =====================
-     PROJECTS
-===================== -->
-    <section id="projects" class="fade">
-
-        <div class="projects-header">
-            <h2 data-es="Proyectos" data-en="Projects">Projects</h2>
-
-            <div class="project-controls">
-                <button id="prev">◀</button>
-                <button id="next">▶</button>
-            </div>
-        </div>
-
-        <!-- ===== CARRUSEL 1 ===== -->
-        <div class="carousel">
-            <div class="track">
-
-                <!-- PROJECT CARD -->
-                <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank"
-                    class="project-card">
-                    <img src="mobile-plan.jpg">
-                    <div class="info">
-                        <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender">Mobile plan
-                            recommender</h3>
-                        <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
-                            data-en="Classification model that recommends the optimal mobile plan for each customer.">
-                        </p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank"
-                    class="project-card">
-                    <img src="bankchurn.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de churn bancario" data-en="Bank churn prediction">Bank churn prediction
-                        </h3>
-                        <p data-es="Modelo para identificar clientes con riesgo de abandonar el banco."
-                            data-en="Model to identify customers at risk of leaving the bank."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank"
-                    class="project-card">
-                    <img src="oil.jpg">
-                    <div class="info">
-                        <h3 data-es="Optimización de pozos petroleros" data-en="Oil well profit optimization">Oil well
-                            profit optimization</h3>
-                        <p data-es="Selección de la región más rentable para perforación."
-                            data-en="Selection of the most profitable region for drilling."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank"
-                    class="project-card">
-                    <img src="gold.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de recuperación de oro" data-en="Gold recovery prediction">Gold recovery
-                            prediction</h3>
-                        <p data-es="Predicción de eficiencia en procesos de purificación."
-                            data-en="Prediction of efficiency in gold purification processes."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank"
-                    class="project-card">
-                    <img src="carprice.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de precios de autos" data-en="Car price prediction">Car price prediction
-                        </h3>
-                        <p data-es="Modelo para estimar precios de autos usados."
-                            data-en="Model to estimate used car prices."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank"
-                    class="project-card">
-                    <img src="taxi.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de demanda de taxis" data-en="Taxi demand prediction">Taxi demand
-                            prediction</h3>
-                        <p data-es="Pronóstico de pedidos horarios en aeropuertos."
-                            data-en="Hourly taxi demand forecasting at airports."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank"
-                    class="project-card">
-                    <img src="reviews.jpg">
-                    <div class="info">
-                        <h3 data-es="Clasificación de reseñas" data-en="Movie review classification">Movie review
-                            classification</h3>
-                        <p data-es="Clasificación de reseñas positivas y negativas."
-                            data-en="Classification of positive and negative movie reviews."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank"
-                    class="project-card">
-                    <img src="face.jpg">
-                    <div class="info">
-                        <h3 data-es="Verificación de edad facial" data-en="Age verification with face recognition">Age
-                            verification</h3>
-                        <p data-es="Predicción de edad mediante reconocimiento facial."
-                            data-en="Age prediction using facial recognition."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank"
-                    class="project-card">
-                    <img src="internet.jpg">
-                    <div class="info">
-                        <h3 data-es="Churn clientes de internet" data-en="Internet customer churn">Internet churn</h3>
-                        <p data-es="Modelo para reducir cancelaciones de clientes."
-                            data-en="Model to reduce customer cancellations."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-                    <img src="fire.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                            Wildfire prediction</h3>
-                        <p data-es="Detección y predicción de incendios con visión computacional."
-                            data-en="Wildfire detection and prediction using computer vision."></p>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-
-        <div style="height:50px;"></div>
-
-        <!-- PROJECT CARD 2 -->
-        <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank" class="project-card">
-            <img src="mobile-plan.jpg">
-            <div class="info">
-                <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender">Mobile plan
-                    recommender</h3>
-                <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
-                    data-en="Classification model that recommends the optimal mobile plan for each customer.">
-                </p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank" class="project-card">
-            <img src="bankchurn.jpg">
-            <div class="info">
-                <h3 data-es="Predicción de churn bancario" data-en="Bank churn prediction">Bank churn prediction
-                </h3>
-                <p data-es="Modelo para identificar clientes con riesgo de abandonar el banco."
-                    data-en="Model to identify customers at risk of leaving the bank."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank" class="project-card">
-            <img src="oil.jpg">
-            <div class="info">
-                <h3 data-es="Optimización de pozos petroleros" data-en="Oil well profit optimization">Oil well
-                    profit optimization</h3>
-                <p data-es="Selección de la región más rentable para perforación."
-                    data-en="Selection of the most profitable region for drilling."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank"
-            class="project-card">
-            <img src="gold.jpg">
-            <div class="info">
-                <h3 data-es="Predicción de recuperación de oro" data-en="Gold recovery prediction">Gold recovery
-                    prediction</h3>
-                <p data-es="Predicción de eficiencia en procesos de purificación."
-                    data-en="Prediction of efficiency in gold purification processes."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank" class="project-card">
-            <img src="carprice.jpg">
-            <div class="info">
-                <h3 data-es="Predicción de precios de autos" data-en="Car price prediction">Car price prediction
-                </h3>
-                <p data-es="Modelo para estimar precios de autos usados." data-en="Model to estimate used car prices.">
-                </p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank" class="project-card">
-            <img src="taxi.jpg">
-            <div class="info">
-                <h3 data-es="Predicción de demanda de taxis" data-en="Taxi demand prediction">Taxi demand
-                    prediction</h3>
-                <p data-es="Pronóstico de pedidos horarios en aeropuertos."
-                    data-en="Hourly taxi demand forecasting at airports."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank"
-            class="project-card">
-            <img src="reviews.jpg">
-            <div class="info">
-                <h3 data-es="Clasificación de reseñas" data-en="Movie review classification">Movie review
-                    classification</h3>
-                <p data-es="Clasificación de reseñas positivas y negativas."
-                    data-en="Classification of positive and negative movie reviews."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank" class="project-card">
-            <img src="face.jpg">
-            <div class="info">
-                <h3 data-es="Verificación de edad facial" data-en="Age verification with face recognition">Age
-                    verification</h3>
-                <p data-es="Predicción de edad mediante reconocimiento facial."
-                    data-en="Age prediction using facial recognition."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank" class="project-card">
-            <img src="internet.jpg">
-            <div class="info">
-                <h3 data-es="Churn clientes de internet" data-en="Internet customer churn">Internet churn</h3>
-                <p data-es="Modelo para reducir cancelaciones de clientes."
-                    data-en="Model to reduce customer cancellations."></p>
-            </div>
-        </a>
-
-        <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-            <img src="fire.jpg">
-            <div class="info">
-                <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                    Wildfire prediction</h3>
-                <p data-es="Detección y predicción de incendios con visión computacional."
-                    data-en="Wildfire detection and prediction using computer vision."></p>
-            </div>
-        </a>
-
-        </div>
-        </div>
-
-        <div style="height:50px;"></div>
-
-        <!-- ===== CARRUSEL 2 ===== -->
-        <div class="carousel reverse">
-            <div class="track">
-
-                <!-- PROJECT CARD -->
-                <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank"
-                    class="project-card">
-                    <img src="taxi.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de demanda de taxis" data-en="Taxi demand prediction">Taxi demand
-                            prediction</h3>
-                        <p data-es="Pronóstico de pedidos horarios en aeropuertos."
-                            data-en="Hourly taxi demand forecasting at airports."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank"
-                    class="project-card">
-                    <img src="reviews.jpg">
-                    <div class="info">
-                        <h3 data-es="Clasificación de reseñas" data-en="Movie review classification">Movie review
-                            classification</h3>
-                        <p data-es="Clasificación de reseñas positivas y negativas."
-                            data-en="Classification of positive and negative movie reviews."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank"
-                    class="project-card">
-                    <img src="face.jpg">
-                    <div class="info">
-                        <h3 data-es="Verificación de edad facial" data-en="Age verification with face recognition">Age
-                            verification</h3>
-                        <p data-es="Predicción de edad mediante reconocimiento facial."
-                            data-en="Age prediction using facial recognition."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank"
-                    class="project-card">
-                    <img src="internet.jpg">
-                    <div class="info">
-                        <h3 data-es="Churn clientes de internet" data-en="Internet customer churn">Internet churn</h3>
-                        <p data-es="Modelo para reducir cancelaciones de clientes."
-                            data-en="Model to reduce customer cancellations."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-                    <img src="fire.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                            Wildfire prediction</h3>
-                        <p data-es="Detección y predicción de incendios con visión computacional."
-                            data-en="Wildfire detection and prediction using computer vision."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank"
-                    class="project-card">
-                    <img src="mobile-plan.jpg">
-                    <div class="info">
-                        <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender">Mobile plan
-                            recommender</h3>
-                        <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
-                            data-en="Classification model that recommends the optimal mobile plan for each customer.">
-                        </p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank"
-                    class="project-card">
-                    <img src="bankchurn.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de churn bancario" data-en="Bank churn prediction">Bank churn prediction
-                        </h3>
-                        <p data-es="Modelo para identificar clientes con riesgo de abandonar el banco."
-                            data-en="Model to identify customers at risk of leaving the bank."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank"
-                    class="project-card">
-                    <img src="oil.jpg">
-                    <div class="info">
-                        <h3 data-es="Optimización de pozos petroleros" data-en="Oil well profit optimization">Oil well
-                            profit optimization</h3>
-                        <p data-es="Selección de la región más rentable para perforación."
-                            data-en="Selection of the most profitable region for drilling."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank"
-                    class="project-card">
-                    <img src="gold.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de recuperación de oro" data-en="Gold recovery prediction">Gold recovery
-                            prediction</h3>
-                        <p data-es="Predicción de eficiencia en procesos de purificación."
-                            data-en="Prediction of efficiency in gold purification processes."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank"
-                    class="project-card">
-                    <img src="carprice.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de precios de autos" data-en="Car price prediction">Car price prediction
-                        </h3>
-                        <p data-es="Modelo para estimar precios de autos usados."
-                            data-en="Model to estimate used car prices."></p>
-                    </div>
-                </a>
-
-                <!-- PROJECT CARD 2 -->
-                <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank"
-                    class="project-card">
-                    <img src="taxi.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de demanda de taxis" data-en="Taxi demand prediction">Taxi demand
-                            prediction</h3>
-                        <p data-es="Pronóstico de pedidos horarios en aeropuertos."
-                            data-en="Hourly taxi demand forecasting at airports."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank"
-                    class="project-card">
-                    <img src="reviews.jpg">
-                    <div class="info">
-                        <h3 data-es="Clasificación de reseñas" data-en="Movie review classification">Movie review
-                            classification</h3>
-                        <p data-es="Clasificación de reseñas positivas y negativas."
-                            data-en="Classification of positive and negative movie reviews."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank"
-                    class="project-card">
-                    <img src="face.jpg">
-                    <div class="info">
-                        <h3 data-es="Verificación de edad facial" data-en="Age verification with face recognition">Age
-                            verification</h3>
-                        <p data-es="Predicción de edad mediante reconocimiento facial."
-                            data-en="Age prediction using facial recognition."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank"
-                    class="project-card">
-                    <img src="internet.jpg">
-                    <div class="info">
-                        <h3 data-es="Churn clientes de internet" data-en="Internet customer churn">Internet churn</h3>
-                        <p data-es="Modelo para reducir cancelaciones de clientes."
-                            data-en="Model to reduce customer cancellations."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-                    <img src="fire.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                            Wildfire prediction</h3>
-                        <p data-es="Detección y predicción de incendios con visión computacional."
-                            data-en="Wildfire detection and prediction using computer vision."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank"
-                    class="project-card">
-                    <img src="mobile-plan.jpg">
-                    <div class="info">
-                        <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender">Mobile plan
-                            recommender</h3>
-                        <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
-                            data-en="Classification model that recommends the optimal mobile plan for each customer.">
-                        </p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank"
-                    class="project-card">
-                    <img src="bankchurn.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de churn bancario" data-en="Bank churn prediction">Bank churn prediction
-                        </h3>
-                        <p data-es="Modelo para identificar clientes con riesgo de abandonar el banco."
-                            data-en="Model to identify customers at risk of leaving the bank."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank"
-                    class="project-card">
-                    <img src="oil.jpg">
-                    <div class="info">
-                        <h3 data-es="Optimización de pozos petroleros" data-en="Oil well profit optimization">Oil well
-                            profit optimization</h3>
-                        <p data-es="Selección de la región más rentable para perforación."
-                            data-en="Selection of the most profitable region for drilling."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank"
-                    class="project-card">
-                    <img src="gold.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de recuperación de oro" data-en="Gold recovery prediction">Gold recovery
-                            prediction</h3>
-                        <p data-es="Predicción de eficiencia en procesos de purificación."
-                            data-en="Prediction of efficiency in gold purification processes."></p>
-                    </div>
-                </a>
-
-                <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank"
-                    class="project-card">
-                    <img src="carprice.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de precios de autos" data-en="Car price prediction">Car price prediction
-                        </h3>
-                        <p data-es="Modelo para estimar precios de autos usados."
-                            data-en="Model to estimate used car prices."></p>
-                    </div>
-                </a>
-
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================
-     PROJECTS STYLES
-===================== -->
-    <style>
-        .projects-header {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .projects-header h2 {
-            font-size: 2.4rem;
-            text-align: center;
-        }
-
-        .project-controls {
-            position: absolute;
-            right: 6%;
-            display: flex;
-            gap: 16px;
-        }
-
-        .project-controls button {
-            background: transparent;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #111;
-            transition: transform .25s ease, opacity .25s ease;
-        }
-
-        .project-controls button:hover {
-            transform: scale(1.2);
-            opacity: 0.7;
-        }
-
-        .carousel-btn {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin: 0 10px;
-            box-shadow: var(--shadow);
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .carousel-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .carousel:hover .track,
-        .carousel.reverse:hover .track {
-            animation-play-state: paused;
-        }
-
-
-
-
-        .carousel {
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .carousel {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-        }
-
-
-        .track {
-            display: flex;
-            gap: 26px;
-            animation: scroll-left 70s linear infinite;
-        }
-
-        .carousel.reverse .track {
-            animation: scroll-right 70s linear infinite;
-        }
-
-        .project-card {
-            min-width: 360px;
-            height: 240px;
-            border-radius: 18px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--shadow);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .6s ease, filter .4s ease;
-        }
-
-        .project-card .info {
-            position: absolute;
-            inset: 0;
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            opacity: 0;
-            transition: opacity .4s ease;
-        }
-
-        .project-card:hover img {
-            transform: scale(1.08);
-            filter: blur(3px) brightness(.7);
-        }
-
-        .project-card:hover .info {
-            opacity: 1;
-        }
-
-        @keyframes scroll-left {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes scroll-right {
-            from {
-                transform: translateX(-50%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 700px) {
-            .project-card {
-                min-width: 260px;
-                height: 180px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
-
-    <!-- =====================
-     SKILLS
-===================== -->
-    <section id="skills" class="fade">
-
-        <h2 data-es="Habilidades" data-en="Skills" style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
-            Skills
-        </h2>
-
-        <div class="skills-grid">
-
-            <!-- PROGRAMMING -->
-            <div class="skill-card glass-card">
-                <h3><i class="fa-solid fa-code"></i>
-                    <span data-es="Lenguajes" data-en="Languages">Languages</span>
-                </h3>
-                <ul>
-                    <li><i class="fa-brands fa-python"></i> Python</li>
-                    <li><i class="fa-solid fa-database"></i> SQL</li>
-                    <li><i class="fa-solid fa-c"></i> C++</li>
-                    <li><i class="fa-solid fa-chart-line"></i> MATLAB</li>
-                    <li><i class="fa-brands fa-html5"></i> HTML</li>
-                    <li><img src="python.png" alt="Python">Pythonnnn</li>
-                </ul>
-            </div>
-
-            <!-- DATA TOOLS -->
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-chart-simple"></i>
-                    <span data-es="Ciencia de Datos" data-en="Data Science">Data Science</span>
-                </h3>
-                <ul>
-                    <li>Pandas · NumPy</li>
-                    <li>Scikit-learn</li>
-                    <li>Machine Learning</li>
-                    <li>Time Series</li>
-                    <li>Deep Learning (Keras / TensorFlow)</li>
-                </ul>
-            </div>
-
-            <!-- LANGUAGES -->
-            <div class="skill-card">
-                <h3><i class="fa-solid fa-language"></i>
-                    <span data-es="Idiomas" data-en="Languages">Languages</span>
-                </h3>
-                <ul>
-                    <li>
-                        <strong data-es="Español:" data-en="Spanish:">Spanish:</strong>
-                        <span data-es="Nativo" data-en="Native">Native</span>
-                    </li>
-                    <li>
-                        <strong data-es="Inglés:" data-en="English:">English:</strong>
-                        B2 (Cambridge FCE)
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- =====================
-     SKILLS STYLES
-===================== -->
-    <style>
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-
-        .skill-card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-            transition: transform .3s ease, box-shadow .3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(138, 143, 160, 0.25);
-        }
-
-        .skill-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--muted);
-        }
-
-        .skill-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .skill-card li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #111111;
-            font-weight: 500;
-        }
-
-        .skill-card i {
-            color: var(--muted);
-        }
-
-        .skill-card ul li img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
-
-    <!-- =====================
-     CONTACT
-===================== -->
-    <section id="contact" class="fade">
-
-        <h2 data-es="Contacto" data-en="Contact" style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
-            Contact
-        </h2>
-
-        <div class="contact-grid">
-
-            <!-- LEFT COLUMN -->
-            <div class="contact-card glass-card">
-
-                <p><i class="fa-solid fa-location-dot"></i>
-                    <span data-es="México" data-en="Mexico">Mexico</span>
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto:samanthalopezvizcarra@gmail.com">
-                        samanthalopezvizcarra@gmail.com
-                    </a>
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    <a href="tel:+521000000000">+52 1 000 000 0000</a>
-                </p>
-            </div>
-
-            <!-- RIGHT COLUMN -->
-            <div class="contact-card glass-card">
-
-                <p>
-                    <i class="fa-brands fa-github"></i>
-                    <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
-                        GitHub
-                    </a>
-                </p>
-
-                <p>
-                    <i class="fa-brands fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">
-                        LinkedIn
-                    </a>
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-file-pdf"></i>
-                    <a href="https://docs.google.com/document/d/1zCNHB7ACw_Lnq2W0c3g8M57k1Qe7CPQH/edit" target="_blank"
-                        data-es="Ver CV" data-en="View CV">
-                        View CV
-                    </a>
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-    <style>
-        #contact {
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        #contact a {
-            color: #555;
-        }
-
-        #contact a:hover {
-            color: #000;
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
-
-    <footer style="text-align:center; padding:30px; color:#6b7280;">
-        © 2025 Samantha López Vizcarra
-    </footer>
-
-    <!-- =====================
-     CONTACT STYLES
-===================== -->
-    <style>
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 22px;
-            box-shadow: var(--shadow);
-            transition: transform .35s ease, box-shadow .35s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
-        }
-
-        .contact-card i {
-            color: #6b7280;
-        }
-
-        .contact-card a {
-            color: #111111;
-            font-weight: 600;
-        }
-
-
-        .contact-card p {
-            font-size: 1.05rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .contact-card a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact-card a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 800px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
-
-
-
-    <!-- =====================
-     JS: LANGUAGE + FADE
-===================== -->
-    <script>
-        let currentLang = 'en';
-        const langBtn = document.getElementById('langBtn');
-
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            langBtn.textContent = currentLang.toUpperCase();
-
-            document.querySelectorAll('[data-es]').forEach(el => {
-                el.classList.remove('show');
-                setTimeout(() => {
-                    el.textContent = el.dataset[currentLang];
-                    el.classList.add('show');
-                }, 150);
-            });
-        });
-
-        // FADE IN ON SCROLL
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-
-
-        function scrollProjects(dir) {
-            document.querySelectorAll('.carousel').forEach(carousel => {
-                carousel.scrollBy({
-                    left: dir * 400,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-
-        prevBtn.addEventListener('click', () => scrollProjects(-1));
-        nextBtn.addEventListener('click', () => scrollProjects(1));
-
-
-
-        const NAV_OFFSET = 120;
-
-        document.querySelectorAll('nav a[data-target]').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                const id = link.dataset.target;
-                const target = document.getElementById(id);
-                if (!target) return;
-
-                const y = target.offsetTop - NAV_OFFSET;
-
-                window.scrollTo({
-                    top: y,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-
-
-    </script>
+<!-- NAVBAR -->
+<nav>
+  <ul>
+    <li><a href="#" data-target="about">About</a></li>
+    <li><a href="#" data-target="projects">Projects</a></li>
+    <li><a href="#" data-target="skills">Skills</a></li>
+    <li><a href="#" data-target="contact">Contact</a></li>
+    <li class="lang-toggle" id="langBtn">EN</li>
+  </ul>
+</nav>
+
+<script>
+/* SCROLL FIX */
+const NAV_OFFSET = 90;
+document.querySelectorAll('nav a[data-target]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById(link.dataset.target);
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  });
+});
+</script>
+
+<!-- HERO -->
+<section class="hero" id="home" style="
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url('me.jpg') center/cover no-repeat;
+  text-align:center;
+  color:white;">
+  
+  <h1 style="font-size:clamp(2.4rem,5vw,4rem)">Samantha López Vizcarra</h1>
+  <p style="margin-top:12px;color:#d1d5db">Junior Data Scientist</p>
+
+  <a href="#" data-target="contact" style="
+    margin-top:30px;
+    display:inline-block;
+    padding:14px 30px;
+    background:white;
+    color:black;
+    border-radius:999px;
+    font-weight:600;
+    text-decoration:none;">
+    Contact me
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center;">
+    <img src="about.jpg" style="width:100%;max-width:420px;border-radius:24px;box-shadow:var(--shadow)">
+    <div>
+      <h2 style="font-size:2.3rem;margin-bottom:18px">About Me</h2>
+      <p>
+        I am a Junior Data Scientist with a strong background in mathematics,
+        programming and statistics. Certified by TripleTen and fluent in English (B2).
+      </p>
+      <p style="margin-top:14px">
+        I focus on building data-driven solutions using machine learning,
+        analytics and visualization tools.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+@media(max-width:768px){
+  #about > div{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  #about img{margin:0 auto}
+}
+</style>
+
+<section id="projects">
+<h2 style="text-align:center;font-size:2.4rem;margin-bottom:40px">Projects</h2>
+
+<div class="carousel">
+  <div class="track">
+    <!-- DUPLICA ESTE BLOQUE PARA LOOP -->
+    <div class="project-card"><img src="mobile-plan.jpg"></div>
+    <div class="project-card"><img src="bankchurn.jpg"></div>
+    <div class="project-card"><img src="oil.jpg"></div>
+    <div class="project-card"><img src="gold.jpg"></div>
+    <div class="project-card"><img src="carprice.jpg"></div>
+
+    <div class="project-card"><img src="mobile-plan.jpg"></div>
+    <div class="project-card"><img src="bankchurn.jpg"></div>
+    <div class="project-card"><img src="oil.jpg"></div>
+    <div class="project-card"><img src="gold.jpg"></div>
+    <div class="project-card"><img src="carprice.jpg"></div>
+  </div>
+</div>
+
+<div style="height:50px"></div>
+
+<div class="carousel reverse">
+  <div class="track">
+    <div class="project-card"><img src="taxi.jpg"></div>
+    <div class="project-card"><img src="reviews.jpg"></div>
+    <div class="project-card"><img src="face.jpg"></div>
+    <div class="project-card"><img src="internet.jpg"></div>
+    <div class="project-card"><img src="fire.jpg"></div>
+
+    <div class="project-card"><img src="taxi.jpg"></div>
+    <div class="project-card"><img src="reviews.jpg"></div>
+    <div class="project-card"><img src="face.jpg"></div>
+    <div class="project-card"><img src="internet.jpg"></div>
+    <div class="project-card"><img src="fire.jpg"></div>
+  </div>
+</div>
+</section>
+
+<style>
+.carousel{
+  width:100vw;
+  overflow:hidden;
+  margin-left:calc(-50vw + 50%);
+}
+.track{
+  display:flex;
+  gap:26px;
+  animation:scroll 60s linear infinite;
+}
+.carousel.reverse .track{
+  animation:scroll-rev 60s linear infinite;
+}
+.carousel:hover .track{
+  animation-play-state:paused;
+}
+.project-card{
+  min-width:360px;
+  height:220px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.project-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@keyframes scroll{
+  to{transform:translateX(-50%)}
+}
+@keyframes scroll-rev{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
+@media(max-width:768px){
+  .project-card{min-width:260px;height:180px}
+}
+</style>
+
+<section id="skills">
+<h2 style="text-align:center;font-size:2.4rem;margin-bottom:50px">Skills</h2>
+
+<div class="grid">
+  <div class="card">
+    <h3><i class="fa-solid fa-code"></i> Languages</h3>
+    <ul>
+      <li><img src="python.png"> Python</li>
+      <li><img src="sql.png"> SQL</li>
+      <li><img src="c.png"> C++</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-chart-line"></i> Tools</h3>
+    <ul>
+      <li>Scikit-learn</li>
+      <li>Power BI</li>
+      <li>Looker Studio</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-language"></i> Languages</h3>
+    <ul>
+      <li>Spanish — Native</li>
+      <li>English — B2</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<style>
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1100px;
+  margin:auto;
+}
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.card ul{
+  list-style:none;
+  margin-top:12px;
+}
+.card li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.card img{
+  width:22px;
+}
+</style>
+
+<section id="contact">
+<h2 style="text-align:center;font-size:2.4rem;margin-bottom:50px">Contact</h2>
+
+<div class="grid">
+  <div class="card">
+    <p><i class="fa-solid fa-location-dot"></i> Mexico</p>
+    <p><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</p>
+    <p><i class="fa-solid fa-phone"></i> +52 1 000 000 0000</p>
+  </div>
+
+  <div class="card">
+    <p><i class="fa-brands fa-github"></i> GitHub</p>
+    <p><i class="fa-brands fa-linkedin"></i> LinkedIn</p>
+    <p><i class="fa-solid fa-file"></i> View CV</p>
+  </div>
+</div>
+</section>
+
+<footer style="text-align:center;padding:30px;color:#6b7280">
+© 2025 Samantha López Vizcarra
+</footer>
+
+<script>
+/* LANG TOGGLE */
+let lang='en';
+document.getElementById('langBtn').onclick=()=>{
+  lang=lang==='en'?'es':'en';
+  document.getElementById('langBtn').textContent=lang.toUpperCase();
+};
+</script>
 
 </body>
-
 </html>
