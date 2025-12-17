@@ -198,21 +198,6 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .track {
-                animation-duration: 90s;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            nav {
-                width: max-content;
-            }
-        }
-
         /* =====================
    MOBILE FIXES
 ===================== */
@@ -286,67 +271,6 @@
                 gap: 30px;
             }
         }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
     </style>
 </head>
 
@@ -357,13 +281,30 @@
 ===================== -->
     <nav>
         <ul>
-            <li><a href="#" data-target="about" data-es="Sobre mí" data-en="About">About</a></li>
-            <li><a href="#" data-target="projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
-            <li><a href="#" data-target="skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
-            <li><a href="#" data-target="contact" data-es="Contacto" data-en="Contact">Contact</a></li>
+            <li>
+                <a href="#about" data-target="about" data-es="Sobre mí" data-en="About">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="#projects" data-target="projects" data-es="Proyectos" data-en="Projects">
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="#skills" data-target="skills" data-es="Habilidades" data-en="Skills">
+                    Skills
+                </a>
+            </li>
+            <li>
+                <a href="#contact" data-target="contact" data-es="Contacto" data-en="Contact">
+                    Contact
+                </a>
+            </li>
             <li class="lang-toggle" id="langBtn">EN</li>
         </ul>
     </nav>
+
 
 
     <!-- =====================
@@ -437,67 +378,6 @@
 
             #about img {
                 margin: 0 auto 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
             }
         }
     </style>
@@ -1122,67 +1002,6 @@
                 height: 180px;
             }
         }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
-        }
     </style>
 
     <!-- =====================
@@ -1212,7 +1031,7 @@
             </div>
 
             <!-- DATA TOOLS -->
-            <div class="skill-card">
+            <div class="skill-card glass-card">
                 <h3><i class="fa-solid fa-chart-simple"></i>
                     <span data-es="Ciencia de Datos" data-en="Data Science">Data Science</span>
                 </h3>
@@ -1226,7 +1045,7 @@
             </div>
 
             <!-- LANGUAGES -->
-            <div class="skill-card">
+            <div class="skill-card glass-card">
                 <h3><i class="fa-solid fa-language"></i>
                     <span data-es="Idiomas" data-en="Languages">Languages</span>
                 </h3>
@@ -1304,67 +1123,6 @@
             width: 24px;
             height: 24px;
             object-fit: contain;
-        }
-
-        @media (max-width: 768px) {
-
-            /* NAV */
-            nav {
-                top: 10px;
-                padding: 8px 12px;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
-            section {
-                padding: 110px 5% 70px;
-                min-height: auto;
-            }
-
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
-            .projects-header {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .project-controls {
-                position: static;
-            }
-
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-card,
-            .contact-card {
-                width: 100%;
-            }
         }
     </style>
 
@@ -1444,35 +1202,21 @@
 
         @media (max-width: 768px) {
 
-            /* NAV */
             nav {
-                top: 10px;
-                padding: 8px 12px;
+                top: 8px;
+                padding: 6px 10px;
             }
 
             nav ul {
-                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            /* SECTIONS */
             section {
-                padding: 110px 5% 70px;
+                padding: 120px 6% 60px;
                 min-height: auto;
             }
 
-            /* ABOUT */
-            #about>div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            /* PROJECTS */
             .projects-header {
                 flex-direction: column;
                 gap: 16px;
@@ -1482,23 +1226,13 @@
                 position: static;
             }
 
-            .carousel {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            /* SKILLS */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* CONTACT */
+            .skills-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .skill-card,
-            .contact-card {
+            .carousel {
+                margin-left: 0;
                 width: 100%;
             }
         }
@@ -1663,14 +1397,18 @@
         document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
 
-        function scrollProjects(dir) {
-            document.querySelectorAll('.carousel').forEach(carousel => {
-                carousel.scrollBy({
-                    left: dir * 400,
-                    behavior: 'smooth'
-                });
+        let paused = false;
+
+        function toggleCarouselPause() {
+            paused = !paused;
+            document.querySelectorAll('.track').forEach(track => {
+                track.style.animationPlayState = paused ? 'paused' : 'running';
             });
         }
+
+        prevBtn.addEventListener('click', toggleCarouselPause);
+        nextBtn.addEventListener('click', toggleCarouselPause);
+
 
         const prevBtn = document.getElementById('prev');
         const nextBtn = document.getElementById('next');
@@ -1680,7 +1418,8 @@
 
 
 
-        const NAV_OFFSET = 120;
+        const NAV_OFFSET = document.querySelector('nav').offsetHeight + 20;
+
 
         document.querySelectorAll('nav a[data-target]').forEach(link => {
             link.addEventListener('click', e => {
