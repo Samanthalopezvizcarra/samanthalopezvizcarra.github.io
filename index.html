@@ -47,8 +47,30 @@
         }
 
         section {
-            scroll-margin-top: 140px;
+            scroll-margin-top: 100px;
         }
+
+        /* =====================
+   CARDS
+===================== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                0 0 0 rgba(0, 0, 0, 0);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.12),
+                0 0 40px rgba(0, 0, 0, 0.08);
+        }
+
 
 
         /* =====================
@@ -291,9 +313,15 @@
 ===================== -->
     <section id="projects" class="fade">
 
-        <h2 data-es="Proyectos" data-en="Projects" style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
-            Projects
-        </h2>
+        <div class="projects-header">
+            <h2 data-es="Proyectos" data-en="Projects">Projects</h2>
+
+            <div class="project-controls">
+                <button id="prev">◀</button>
+                <button id="next">▶</button>
+            </div>
+        </div>
+
 
         <div style="text-align:center; margin-bottom:20px;">
             <button onclick="scrollProjects(-1)">◀</button>
@@ -542,6 +570,40 @@
      PROJECTS STYLES
 ===================== -->
     <style>
+        .projects-header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .projects-header h2 {
+            font-size: 2.4rem;
+            text-align: center;
+        }
+
+        .project-controls {
+            position: absolute;
+            right: 6%;
+            display: flex;
+            gap: 16px;
+        }
+
+        .project-controls button {
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #111;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .project-controls button:hover {
+            transform: scale(1.2);
+            opacity: 0.7;
+        }
+
         .carousel-btn {
             background: white;
             border: 1px solid var(--border);
@@ -671,7 +733,7 @@
         <div class="skills-grid">
 
             <!-- PROGRAMMING -->
-            <div class="skill-card">
+            <div class="skill-card glass-card">
                 <h3><i class="fa-solid fa-code"></i>
                     <span data-es="Lenguajes" data-en="Languages">Languages</span>
                 </h3>
@@ -794,7 +856,8 @@
         <div class="contact-grid">
 
             <!-- LEFT COLUMN -->
-            <div class="contact-card">
+            <div class="contact-card glass-card">
+
                 <p><i class="fa-solid fa-location-dot"></i>
                     <span data-es="México" data-en="Mexico">Mexico</span>
                 </p>
@@ -813,7 +876,8 @@
             </div>
 
             <!-- RIGHT COLUMN -->
-            <div class="contact-card">
+            <div class="contact-card glass-card">
+
                 <p>
                     <i class="fa-brands fa-github"></i>
                     <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
@@ -842,12 +906,16 @@
     </section>
     <style>
         #contact {
-            background: #0b0b0b;
-            color: white;
+            background: var(--bg);
+            color: var(--text);
         }
 
         #contact a {
-            color: #000000;
+            color: #555;
+        }
+
+        #contact a:hover {
+            color: #000;
         }
     </style>
 
