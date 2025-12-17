@@ -45,6 +45,7 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            margin: 0;
         }
 
         /* =====================
@@ -80,10 +81,16 @@
             transform: translateX(-50%);
             background: var(--card);
             backdrop-filter: blur(12px);
-            padding: 10px 20px;
             border-radius: 999px;
             box-shadow: var(--shadow);
             z-index: 1000;
+            min-height: 100vh;
+            width: 100%;
+            padding: 0 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
         nav ul {
@@ -91,15 +98,21 @@
             gap: 18px;
             list-style: none;
             align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            margin: 0;
+
+            flex-wrap: nowrap;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             padding: 6px 10px;
             border-radius: 10px;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -136,6 +149,13 @@
                 url("me.jpg") center/cover no-repeat;
             text-align: center;
             color: white;
+            min-height: 100vh;
+            width: 100%;
+            padding: 0 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
 
@@ -389,11 +409,6 @@
 
         <div class="projects-header">
             <h2 data-es="Proyectos" data-en="Projects">Projects</h2>
-
-            <div class="project-controls">
-                <button id="prev">◀</button>
-                <button id="next">▶</button>
-            </div>
         </div>
 
         <!-- ===== CARRUSEL 1 ===== -->
@@ -532,7 +547,7 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
                     <img src="fire.jpg">
                     <div class="info">
@@ -586,7 +601,7 @@
                     </div>
                 </a>
 
-                                <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank"
+                <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank"
                     class="project-card">
                     <img src="carprice.jpg">
                     <div class="info">
@@ -629,7 +644,7 @@
                             data-en="Model to identify customers at risk of leaving the bank."></p>
                     </div>
                 </a>
-        
+
 
             </div>
         </div>
@@ -657,20 +672,6 @@
             right: 6%;
             display: flex;
             gap: 16px;
-        }
-
-        .project-controls button {
-            background: transparent;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #111;
-            transition: transform .25s ease, opacity .25s ease;
-        }
-
-        .project-controls button:hover {
-            transform: scale(1.2);
-            opacity: 0.7;
         }
 
         .carousel-btn {
@@ -705,7 +706,6 @@
         }
 
         .carousel {
-            width: 100vw;
             margin-left: calc(-50vw + 50%);
         }
 
@@ -713,11 +713,13 @@
         .track {
             display: flex;
             gap: 26px;
-            animation: scroll-left 70s linear infinite;
+            animation: scroll-left 30s linear infinite;
+            width: max-content;
         }
 
         .carousel.reverse .track {
             animation: scroll-right 70s linear infinite;
+            animation-direction: reverse;
         }
 
         .project-card {
@@ -776,6 +778,21 @@
             to {
                 transform: translateX(0);
             }
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* PAUSA AL HOVER (AMBOS CARRUSELES) */
+        .carousel:hover .track {
+            animation-play-state: paused;
         }
 
         @media (max-width: 700px) {
@@ -1083,7 +1100,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
 
             /* NAV */
             nav {
@@ -1096,7 +1113,7 @@
             }
 
             nav a {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
 
             /* SECTIONS */
@@ -1187,18 +1204,6 @@
                 track.style.animationPlayState = paused ? 'paused' : 'running';
             });
         }
-
-        prevBtn.addEventListener('click', toggleCarouselPause);
-        nextBtn.addEventListener('click', toggleCarouselPause);
-
-
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-
-        prevBtn.addEventListener('click', () => scrollProjects(-1));
-        nextBtn.addEventListener('click', () => scrollProjects(1));
-
-
 
         const NAV_OFFSET = document.querySelector('nav').offsetHeight + 20;
 
