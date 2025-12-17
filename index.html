@@ -1,51 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Samantha López Vizcarra | Data Scientist</title>
 
-<!-- =====================
-     GOOGLE FONTS (META STYLE)
-===================== -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- =====================
-     ICONS
-===================== -->
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* =====================
-   DESIGN SYSTEM
-   Google / Meta inspired
+   VARIABLES / THEME
 ===================== */
 :root {
-  --black: #0b0b0b;
-  --white: #ffffff;
-  --bg: #ffffff;
-  --card: #f5f6fa;
-  --text: #1f2937;
+  --bg: #f6f8fb;
+  --card: rgba(255,255,255,0.85);
+  --text: #1c1e21;
   --muted: #6b7280;
-  --accent: #8b9dfc;
-  --accent-soft: #e6eaff;
-  --radius: 18px;
-
-  --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
-  --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
-
-  --ease: cubic-bezier(.22,.61,.36,1);
+  --accent: #7c9cff;
+  --accent-soft: #dbe4ff;
+  --radius: 16px;
+  --shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* =====================
-   RESET
-===================== */
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -56,69 +37,119 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
 /* =====================
-   TYPOGRAPHY SYSTEM
+   NAVBAR
 ===================== */
-h1 {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
 }
 
-h2 {
-  font-size: clamp(2.1rem, 4vw, 2.6rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+nav ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  align-items: center;
 }
 
-h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-p {
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-a {
-  color: inherit;
+nav a {
   text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+nav a:hover {
+  background: var(--accent-soft);
+}
+
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--accent);
+  border-left: 1px solid #ddd;
+  padding-left: 14px;
 }
 
 /* =====================
-   LAYOUT
+   SECTIONS
 ===================== */
 section {
   min-height: 100vh;
-  padding: 120px 8%;
+  padding: 110px 8% 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-@media (max-width: 900px) {
-  section {
-    padding: 110px 6% 90px;
-  }
+/* =====================
+   HERO
+===================== */
+.hero {
+  background:
+    linear-gradient(
+      rgba(246,248,251,0.85),
+      rgba(246,248,251,0.85)
+    ),
+    url("me.jpg") center/cover no-repeat;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 12px;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+.hero .cta {
+  margin-top: 28px;
+}
+
+.hero .cta a {
+  display: inline-block;
+  padding: 14px 30px;
+  background: var(--accent);
+  color: white;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+
+.hero .cta a:hover {
+  transform: translateY(-3px);
 }
 
 /* =====================
-   FADE / SLIDE ANIMATION
+   FADE ANIMATION
 ===================== */
 .fade {
   opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.9s var(--ease),
-    transform 0.9s var(--ease);
+  transform: translateY(16px);
+  transition: all .6s ease;
 }
 
 .fade.show {
@@ -127,26 +158,15 @@ section {
 }
 
 /* =====================
-   BUTTONS
+   RESPONSIVE
 ===================== */
-.btn {
-  display: inline-block;
-  padding: 14px 34px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+@media (max-width: 900px) {
+  nav ul {
+    gap: 12px;
+  }
+  section {
+    padding: 110px 6% 80px;
+  }
 }
 </style>
 </head>
@@ -156,329 +176,262 @@ section {
 <!-- =====================
      NAVBAR
 ===================== -->
-<header class="navbar">
-  <div class="nav-container">
-    <span class="logo">SLV</span>
-
-    <nav>
-      <a href="#about" data-es="Sobre mí" data-en="About">About</a>
-      <a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a>
-      <a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a>
-      <a href="#contact" data-es="Contacto" data-en="Contact">Contact</a>
-    </nav>
-
-    <!-- Language Toggle -->
-    <button id="lang-toggle" class="lang-btn">EN</button>
-  </div>
-</header>
-
-<style>
-/* =====================
-   NAVBAR STYLES
-===================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(11,11,11,0.6);
-  backdrop-filter: blur(14px);
-}
-
-.nav-container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 18px 8%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-
-.logo {
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-nav a {
-  margin: 0 18px;
-  font-weight: 500;
-  opacity: 0.85;
-  transition: opacity .3s var(--ease);
-}
-
-nav a:hover {
-  opacity: 1;
-}
-
-.lang-btn {
-  background: none;
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-</style>
+<nav>
+  <ul>
+    <li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
+    <li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+    <li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
+    <li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
+    <li class="lang-toggle" id="langBtn">EN</li>
+  </ul>
+</nav>
 
 <!-- =====================
-     HERO SECTION (BLACK)
+     HERO
 ===================== -->
-<section id="home" class="hero fade show"
-  style="
-    background:
-      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-      url('me.jpg') center/cover no-repeat;
-    color: white;
-    text-align: center;
-  "
->
-
+<section class="hero fade show" id="home">
   <h1>Samantha López Vizcarra</h1>
-
-  <p
-    data-es="Data Scientist Jr especializada en Machine Learning y Análisis de Datos"
-    data-en="Junior Data Scientist specialized in Machine Learning and Data Analysis"
-    style="margin:20px auto 40px;max-width:680px;color:#d1d5db;"
-  >
-    Data Scientist Jr specialized in Machine Learning and Data Analysis
+  <p data-es="Data Scientist Jr" data-en="Junior Data Scientist">
+    Data Scientist Jr
   </p>
 
-  <a href="#contact"
-     class="btn"
-     style="background:white;color:black;"
-     data-es="Contáctame"
-     data-en="Contact me">
-    Contact me
-  </a>
-
+  <div class="cta">
+    <a href="#contact"
+       data-es="Contáctame"
+       data-en="Contact me">
+      Contact me
+    </a>
+  </div>
 </section>
 
 <!-- =====================
-     ABOUT SECTION
+     ABOUT ME
 ===================== -->
-<section id="about" class="fade" style="background:white;">
-
-  <div class="about-container">
+<section id="about" class="fade">
+  <div style="
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: center;
+  ">
 
     <!-- FOTO -->
-    <div class="about-image">
-      <img src="about.jpg" alt="About Samantha">
+    <div>
+      <img src="about.jpg"
+           alt="About Samantha"
+           style="
+             width: 100%;
+             max-width: 420px;
+             border-radius: 24px;
+             box-shadow: var(--shadow);
+           ">
     </div>
 
     <!-- TEXTO -->
-    <div class="about-text">
-
+    <div>
       <h2
         data-es="Sobre mí"
-        data-en="About Me">
+        data-en="About Me"
+        style="font-size: 2.2rem; margin-bottom: 18px;">
         About Me
       </h2>
 
       <p
-        data-es="Soy recién egresada de Ingeniería Mecatrónica con una sólida base en matemáticas, programación y estadística. Soy Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Tengo experiencia práctica y orientada a proyectos en machine learning, análisis y visualización de datos, así como dominio de herramientas como Python, SQL, Power BI, Looker Studio y metodologías lean."
-        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as strong proficiency in tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies.">
+        data-es="Soy recién egresada de Ingeniería Mecatrónica con una sólida base en matemáticas, programación y estadística. Soy Data Scientist Jr certificada por el bootcamp intensivo de TripleTen y cuento con un nivel de inglés B2. Tengo experiencia práctica y orientada a proyectos en machine learning, análisis y visualización de datos, así como dominio de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean."
+        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as strong proficiency in tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies."
+        style="margin-bottom: 16px; font-size: 1.05rem;">
+        I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics...
       </p>
 
       <p
-        data-es="Mi experiencia previa como desarrolladora de prototipos en I+D dentro del sector biomédico fortaleció mis habilidades en resolución de problemas complejos, atención al detalle y colaboración con equipos multidisciplinarios. Busco aplicar esta combinación de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y crear soluciones con impacto real."
-        data-en="My previous experience as an R&D prototype developer in the biomedical sector strengthened my skills in complex problem-solving, attention to detail, and collaboration with multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and build solutions with real impact.">
+        data-es="Mi experiencia previa como desarrolladora de prototipos de I+D en el sector biomédico fortaleció mis habilidades blandas, incluyendo la resolución de problemas complejos, la atención al detalle y el trabajo colaborativo en equipos multidisciplinarios. Busco aplicar esta combinación de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
+        data-en="My previous experience as an R&D prototype developer in the biomedical sector strengthened my soft skills, including complex problem-solving, attention to detail, and collaboration in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and develop solutions that create real value."
+        style="font-size: 1.05rem;">
+        My previous experience as an R&D prototype developer in the biomedical sector strengthened my soft skills...
       </p>
-
     </div>
-  </div>
 
+  </div>
 </section>
 
+<!-- RESPONSIVE ABOUT -->
 <style>
-/* =====================
-   ABOUT STYLES
-===================== */
-.about-container {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.about-image img {
-  width: 100%;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-}
-
-.about-text h2 {
-  margin-bottom: 24px;
-}
-
-.about-text p {
-  margin-bottom: 18px;
-  color: var(--muted);
-  max-width: 720px;
-}
-
-/* RESPONSIVE */
 @media (max-width: 900px) {
-  .about-container {
+  #about > div {
     grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .about-image {
-    max-width: 320px;
-    margin: auto;
-  }
-
-  .about-text {
     text-align: center;
   }
 
-  .about-text p {
-    margin-left: auto;
-    margin-right: auto;
+  #about img {
+    margin: 0 auto 30px;
   }
 }
 </style>
 
 <!-- =====================
-     PROJECTS SECTION
+     PROJECTS
 ===================== -->
-<section id="projects" class="fade" style="background:white;">
+<section id="projects" class="fade">
 
   <h2
     data-es="Proyectos"
     data-en="Projects"
-    style="text-align:center;margin-bottom:60px;">
+    style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
     Projects
   </h2>
 
-  <!-- CARRUSEL 1 -->
+  <!-- ===== CARRUSEL 1 ===== -->
   <div class="carousel">
     <div class="track">
 
       <!-- PROJECT CARD -->
-      <div class="project-card">
-        <h3
-          data-es="Predicción de abandono de clientes"
-          data-en="Customer Churn Prediction">
-          Customer Churn Prediction
-        </h3>
-        <p
-          data-es="Modelo de machine learning para predecir churn usando Python y scikit-learn."
-          data-en="Machine learning model to predict customer churn using Python and scikit-learn.">
-        </p>
-        <span>Python · ML · Scikit-learn</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank" class="project-card">
+        <img src="mobile-plan.jpg">
+        <div class="info">
+          <h3 data-es="Recomendador de planes móviles" data-en="Mobile plan recommender">Mobile plan recommender</h3>
+          <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
+             data-en="Classification model that recommends the optimal mobile plan for each customer.">
+          </p>
+        </div>
+      </a>
 
-      <div class="project-card">
-        <h3
-          data-es="Análisis de ventas"
-          data-en="Sales Analysis Dashboard">
-          Sales Analysis Dashboard
-        </h3>
-        <p
-          data-es="Dashboard interactivo para análisis de ventas con Power BI."
-          data-en="Interactive dashboard for sales analysis using Power BI.">
-        </p>
-        <span>Power BI · SQL</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/bank-retention-model" target="_blank" class="project-card">
+        <img src="bankchurn.jpg">
+        <div class="info">
+          <h3 data-es="Predicción de churn bancario" data-en="Bank churn prediction">Bank churn prediction</h3>
+          <p data-es="Modelo para identificar clientes con riesgo de abandonar el banco."
+             data-en="Model to identify customers at risk of leaving the bank."></p>
+        </div>
+      </a>
 
-      <div class="project-card">
-        <h3
-          data-es="Clasificación de imágenes"
-          data-en="Image Classification">
-          Image Classification
-        </h3>
-        <p
-          data-es="Modelo de deep learning para clasificación de imágenes."
-          data-en="Deep learning model for image classification.">
-        </p>
-        <span>PyTorch · CNN</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization" target="_blank" class="project-card">
+        <img src="oil.jpg">
+        <div class="info">
+          <h3 data-es="Optimización de pozos petroleros" data-en="Oil well profit optimization">Oil well profit optimization</h3>
+          <p data-es="Selección de la región más rentable para perforación."
+             data-en="Selection of the most profitable region for drilling."></p>
+        </div>
+      </a>
 
-      <!-- DUPLICADO PARA LOOP INFINITO -->
-      <div class="project-card">
-        <h3>Customer Churn Prediction</h3>
-        <p></p>
-        <span>Python · ML</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/gold-recovery-prediction" target="_blank" class="project-card">
+        <img src="gold.jpg">
+        <div class="info">
+          <h3 data-es="Predicción de recuperación de oro" data-en="Gold recovery prediction">Gold recovery prediction</h3>
+          <p data-es="Predicción de eficiencia en procesos de purificación."
+             data-en="Prediction of efficiency in gold purification processes."></p>
+        </div>
+      </a>
 
-      <div class="project-card">
-        <h3>Sales Analysis Dashboard</h3>
-        <p></p>
-        <span>Power BI · SQL</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/car-price-prediction" target="_blank" class="project-card">
+        <img src="carprice.jpg">
+        <div class="info">
+          <h3 data-es="Predicción de precios de autos" data-en="Car price prediction">Car price prediction</h3>
+          <p data-es="Modelo para estimar precios de autos usados."
+             data-en="Model to estimate used car prices."></p>
+        </div>
+      </a>
 
-    </div>
-  </div>
+      <a href="https://github.com/Samanthalopezvizcarra/taxi-demand-prediction" target="_blank" class="project-card">
+        <img src="taxi.jpg">
+        <div class="info">
+          <h3 data-es="Predicción de demanda de taxis" data-en="Taxi demand prediction">Taxi demand prediction</h3>
+          <p data-es="Pronóstico de pedidos horarios en aeropuertos."
+             data-en="Hourly taxi demand forecasting at airports."></p>
+        </div>
+      </a>
 
-  <!-- CARRUSEL 2 (INVERSO) -->
-  <div class="carousel reverse">
-    <div class="track">
+      <a href="https://github.com/Samanthalopezvizcarra/movie-review-classification" target="_blank" class="project-card">
+        <img src="reviews.jpg">
+        <div class="info">
+          <h3 data-es="Clasificación de reseñas" data-en="Movie review classification">Movie review classification</h3>
+          <p data-es="Clasificación de reseñas positivas y negativas."
+             data-en="Classification of positive and negative movie reviews."></p>
+        </div>
+      </a>
 
-      <div class="project-card">
-        <h3
-          data-es="Segmentación de clientes"
-          data-en="Customer Segmentation">
-          Customer Segmentation
-        </h3>
-        <p
-          data-es="Clustering para segmentación de clientes."
-          data-en="Clustering techniques for customer segmentation.">
-        </p>
-        <span>Python · K-Means</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/age-face-recognition" target="_blank" class="project-card">
+        <img src="face.jpg">
+        <div class="info">
+          <h3 data-es="Verificación de edad facial" data-en="Age verification with face recognition">Age verification</h3>
+          <p data-es="Predicción de edad mediante reconocimiento facial."
+             data-en="Age prediction using facial recognition."></p>
+        </div>
+      </a>
 
-      <div class="project-card">
-        <h3
-          data-es="Sistema de recomendación"
-          data-en="Recommendation System">
-          Recommendation System
-        </h3>
-        <p
-          data-es="Sistema de recomendación basado en comportamiento."
-          data-en="Behavior-based recommendation system.">
-        </p>
-        <span>Python · ML</span>
-      </div>
+      <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank" class="project-card">
+        <img src="internet.jpg">
+        <div class="info">
+          <h3 data-es="Churn clientes de internet" data-en="Internet customer churn">Internet churn</h3>
+          <p data-es="Modelo para reducir cancelaciones de clientes."
+             data-en="Model to reduce customer cancellations."></p>
+        </div>
+      </a>
 
-      <!-- DUPLICADOS -->
-      <div class="project-card">
-        <h3>Customer Segmentation</h3>
-        <p></p>
-        <span>Python · Clustering</span>
-      </div>
-
-      <div class="project-card">
-        <h3>Recommendation System</h3>
-        <p></p>
-        <span>Python · ML</span>
-      </div>
+      <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
+        <img src="fire.jpg">
+        <div class="info">
+          <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">Wildfire prediction</h3>
+          <p data-es="Detección y predicción de incendios con visión computacional."
+             data-en="Wildfire detection and prediction using computer vision."></p>
+        </div>
+      </a>
 
     </div>
   </div>
 
 </section>
 
+<!-- =====================
+     PROJECTS STYLES
+===================== -->
 <style>
-/* =====================
-   PROJECTS STYLES
-===================== */
 .carousel {
   overflow: hidden;
-  margin-bottom: 60px;
+  width: 100%;
 }
 
 .track {
   display: flex;
-  gap: 28px;
-  animation: scroll 60s linear infinite;
+  gap: 26px;
+  animation: scroll 70s linear infinite;
 }
 
-.carousel.reverse .track {
-  animation-direction: reverse;
+.project-card {
+  min-width: 360px;
+  height: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease, filter .4s ease;
+}
+
+.project-card .info {
+  position: absolute;
+  inset: 0;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.08);
+  filter: blur(3px) brightness(.7);
+}
+
+.project-card:hover .info {
+  opacity: 1;
 }
 
 @keyframes scroll {
@@ -486,264 +439,301 @@ nav a:hover {
   to { transform: translateX(-50%); }
 }
 
-.project-card {
-  min-width: 320px;
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow-sm);
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-
-.project-card h3 {
-  margin-bottom: 10px;
-}
-
-.project-card p {
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.project-card span {
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 500;
+@media (max-width: 700px) {
+  .project-card {
+    min-width: 260px;
+    height: 180px;
+  }
 }
 </style>
 
 <!-- =====================
-     SKILLS SECTION
+     SKILLS
 ===================== -->
-<section id="skills" class="fade" style="background:#f7f8fa;">
+<section id="skills" class="fade">
 
   <h2
     data-es="Habilidades"
     data-en="Skills"
-    style="text-align:center;margin-bottom:60px;">
+    style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
     Skills
   </h2>
 
-  <div class="skills-wrapper">
+  <div class="skills-grid">
 
-    <!-- SKILL CATEGORY -->
-    <div class="skill-category">
-      <h3>Languages</h3>
-      <div class="skill-grid">
-        <div class="skill"><i class="fa-brands fa-python"></i>Python</div>
-        <div class="skill"><i class="fa-solid fa-database"></i>SQL</div>
-        <div class="skill"><i class="fa-solid fa-code"></i>C++</div>
-        <div class="skill"><i class="fa-solid fa-square-root-variable"></i>MATLAB</div>
-        <div class="skill"><i class="fa-brands fa-html5"></i>HTML</div>
-      </div>
+    <!-- PROGRAMMING -->
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-code"></i>
+        <span data-es="Lenguajes" data-en="Languages">Languages</span>
+      </h3>
+      <ul>
+        <li><i class="fa-brands fa-python"></i> Python</li>
+        <li><i class="fa-solid fa-database"></i> SQL</li>
+        <li><i class="fa-solid fa-c"></i> C++</li>
+        <li><i class="fa-solid fa-chart-line"></i> MATLAB</li>
+        <li><i class="fa-brands fa-html5"></i> HTML</li>
+      </ul>
     </div>
 
-    <div class="skill-category">
-      <h3>Data & ML</h3>
-      <div class="skill-grid">
-        <div class="skill"><i class="fa-solid fa-chart-line"></i>Pandas</div>
-        <div class="skill"><i class="fa-solid fa-cubes"></i>NumPy</div>
-        <div class="skill"><i class="fa-solid fa-brain"></i>Scikit-learn</div>
-        <div class="skill"><i class="fa-solid fa-chart-area"></i>Matplotlib</div>
-        <div class="skill"><i class="fa-solid fa-wave-square"></i>Seaborn</div>
-      </div>
+    <!-- DATA TOOLS -->
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-chart-simple"></i>
+        <span data-es="Ciencia de Datos" data-en="Data Science">Data Science</span>
+      </h3>
+      <ul>
+        <li>Pandas · NumPy</li>
+        <li>Scikit-learn</li>
+        <li>Machine Learning</li>
+        <li>Time Series</li>
+        <li>Deep Learning (Keras / TensorFlow)</li>
+      </ul>
     </div>
 
-    <div class="skill-category">
-      <h3>BI & Tools</h3>
-      <div class="skill-grid">
-        <div class="skill"><i class="fa-solid fa-chart-pie"></i>Power BI</div>
-        <div class="skill"><i class="fa-solid fa-chart-column"></i>Looker Studio</div>
-        <div class="skill"><i class="fa-brands fa-github"></i>GitHub</div>
-        <div class="skill"><i class="fa-solid fa-book"></i>Jupyter</div>
-        <div class="skill"><i class="fa-solid fa-plug"></i>APIs</div>
-      </div>
+    <!-- VISUALIZATION -->
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-chart-pie"></i>
+        <span data-es="Visualización" data-en="Visualization">Visualization</span>
+      </h3>
+      <ul>
+        <li>Power BI</li>
+        <li>Looker Studio</li>
+        <li>Matplotlib</li>
+        <li>Seaborn</li>
+        <li>Dashboards</li>
+      </ul>
     </div>
 
-    <div class="skill-category">
-      <h3>Languages</h3>
-      <div class="skill-grid">
-        <div class="skill"><i class="fa-solid fa-globe"></i>Spanish (Native)</div>
-        <div class="skill"><i class="fa-solid fa-language"></i>English (B2)</div>
-      </div>
+    <!-- TOOLS -->
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-toolbox"></i>
+        <span data-es="Herramientas" data-en="Tools">Tools</span>
+      </h3>
+      <ul>
+        <li>Git · GitHub</li>
+        <li>Jupyter Notebook</li>
+        <li>APIs</li>
+        <li>Excel · Office</li>
+        <li>Lean methodologies</li>
+      </ul>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-language"></i>
+        <span data-es="Idiomas" data-en="Languages">Languages</span>
+      </h3>
+      <ul>
+        <li>
+          <strong data-es="Español:" data-en="Spanish:">Spanish:</strong>
+          <span data-es="Nativo" data-en="Native">Native</span>
+        </li>
+        <li>
+          <strong data-es="Inglés:" data-en="English:">English:</strong>
+          B2 (Cambridge FCE)
+        </li>
+      </ul>
     </div>
 
   </div>
 
 </section>
 
+<!-- =====================
+     SKILLS STYLES
+===================== -->
 <style>
-/* =====================
-   SKILLS STYLES
-===================== */
-.skills-wrapper {
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
   max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 40px;
+  margin: 0 auto;
 }
 
-.skill-category h3 {
-  margin-bottom: 20px;
-  font-size: 1.15rem;
+.skill-card {
+  background: var(--card);
+  padding: 26px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
-  gap: 14px;
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(124,156,255,0.25);
 }
 
-.skill {
-  background: white;
-  border-radius: 14px;
-  padding: 14px 16px;
-  font-size: 0.9rem;
+.skill-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: var(--shadow-sm);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-
-.skill i {
   color: var(--accent);
-  font-size: 1.1rem;
 }
 
-.skill:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.skill-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-card li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-card i {
+  color: var(--accent);
 }
 </style>
 
 <!-- =====================
-     CONTACT SECTION
+     CONTACT
 ===================== -->
-<section id="contact" class="fade contact-section">
+<section id="contact" class="fade">
 
   <h2
     data-es="Contacto"
     data-en="Contact"
-    style="text-align:center;margin-bottom:60px;">
+    style="font-size:2.4rem; text-align:center; margin-bottom:50px;">
     Contact
   </h2>
 
   <div class="contact-grid">
 
     <!-- LEFT COLUMN -->
-    <div class="contact-col">
-      <div class="contact-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <span>Mexico</span>
-      </div>
+    <div class="contact-card">
+      <p><i class="fa-solid fa-location-dot"></i>
+        <span data-es="México" data-en="Mexico">Mexico</span>
+      </p>
 
-      <div class="contact-item">
+      <p>
         <i class="fa-solid fa-envelope"></i>
         <a href="mailto:samanthalopezvizcarra@gmail.com">
           samanthalopezvizcarra@gmail.com
         </a>
-      </div>
+      </p>
 
-      <div class="contact-item">
+      <p>
         <i class="fa-solid fa-phone"></i>
-        <a href="tel:+52XXXXXXXXXX">
-          +52 XXXXX XXXXX
-        </a>
-      </div>
+        <a href="tel:+521000000000">+52 1 000 000 0000</a>
+      </p>
     </div>
 
     <!-- RIGHT COLUMN -->
-    <div class="contact-col">
-      <div class="contact-item">
+    <div class="contact-card">
+      <p>
         <i class="fa-brands fa-github"></i>
         <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
           GitHub
         </a>
-      </div>
+      </p>
 
-      <div class="contact-item">
+      <p>
         <i class="fa-brands fa-linkedin"></i>
         <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">
           LinkedIn
         </a>
-      </div>
+      </p>
 
-      <div class="contact-item">
+      <p>
         <i class="fa-solid fa-file-pdf"></i>
-        <a
-          href="https://docs.google.com/document/d/1zCNHB7ACw_Lnq2W0c3g8M57k1Qe7CPQH/edit"
-          target="_blank">
-          Download CV
+        <a href="https://docs.google.com/document/d/1zCNHB7ACw_Lnq2W0c3g8M57k1Qe7CPQH/edit"
+           target="_blank"
+           data-es="Ver CV"
+           data-en="View CV">
+          View CV
         </a>
-      </div>
+      </p>
     </div>
 
   </div>
 
 </section>
 
-<footer class="footer">
+<footer style="text-align:center; padding:30px; color:#6b7280;">
   © 2025 Samantha López Vizcarra
 </footer>
 
+<!-- =====================
+     CONTACT STYLES
+===================== -->
 <style>
-/* =====================
-   CONTACT STYLES
-===================== */
-.contact-section {
-  background: #0b0b0b;
-  color: white;
-  padding: 120px 20px;
-}
-
 .contact-grid {
-  max-width: 900px;
-  margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.contact-col {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
+.contact-card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 
-.contact-item {
+.contact-card p {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: 1rem;
+  gap: 14px;
 }
 
-.contact-item i {
-  font-size: 1.2rem;
+.contact-card a {
   color: var(--accent);
-}
-
-.contact-item a {
-  color: white;
   text-decoration: none;
-  transition: color .3s ease;
+  font-weight: 600;
 }
 
-.contact-item a:hover {
-  color: var(--accent);
+.contact-card a:hover {
+  text-decoration: underline;
 }
 
-.footer {
-  background: #0b0b0b;
-  color: #777;
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 0.85rem;
+@media (max-width: 800px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
+
+<!-- =====================
+     JS: LANGUAGE + FADE
+===================== -->
+<script>
+let currentLang = 'en';
+const langBtn = document.getElementById('langBtn');
+
+langBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'en' ? 'es' : 'en';
+  langBtn.textContent = currentLang.toUpperCase();
+
+  document.querySelectorAll('[data-es]').forEach(el => {
+    el.classList.remove('show');
+    setTimeout(() => {
+      el.textContent = el.dataset[currentLang];
+      el.classList.add('show');
+    }, 150);
+  });
+});
+
+// FADE IN ON SCROLL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
 
