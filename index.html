@@ -5,249 +5,745 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Samantha López Vizcarra | Data Scientist</title>
 
+<!-- =====================
+     GOOGLE FONTS (META STYLE)
+===================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- =====================
+     ICONS
+===================== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-html,body{overflow-x:hidden}
-:root{
---bg:#f7f7f5;
---card:rgba(255,255,255,.9);
---text:#1e1e1e;
---accent:#6b6f76;
---accent-soft:#8b8f96;
---shadow:0 8px 22px rgba(16,24,40,.06);
---glass-border:rgba(0,0,0,.04);
---glow:0 6px 24px rgba(106,123,255,.12)
-}
-@media(prefers-color-scheme:dark){
-:root{
---bg:#0f0f0f;
---card:rgba(25,25,25,.6);
---text:#e8e8e8;
---accent:#b4b4b4;
---accent-soft:#d1d1d1;
---shadow:0 8px 22px rgba(0,0,0,.4);
---glass-border:rgba(255,255,255,.04);
---glow:0 6px 24px rgba(106,123,255,.08)
-}}
+/* =====================
+   DESIGN SYSTEM
+   Google / Meta inspired
+===================== */
+:root {
+  --black: #0b0b0b;
+  --white: #ffffff;
+  --bg: #ffffff;
+  --card: #f5f6fa;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #8b9dfc;
+  --accent-soft: #e6eaff;
+  --radius: 18px;
 
-body{
-margin:0;
-font-family:Inter,system-ui,sans-serif;
-background:var(--bg);
-color:var(--text);
-scroll-behavior:smooth
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
 }
 
-/* NAV */
-nav{
-position:fixed;
-top:10px;
-left:50%;
-transform:translateX(-50%);
-background:var(--card);
-backdrop-filter:blur(8px);
-padding:8px 18px;
-border-radius:999px;
-z-index:1200;
-border:1px solid var(--glass-border)
-}
-nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
-nav a{text-decoration:none;color:var(--text);font-weight:600}
-
-/* LANGUAGE TOGGLE */
-.lang-toggle{
-position:fixed;
-top:14px;
-right:18px;
-z-index:1300
-}
-.lang-toggle button{
-background:var(--card);
-border:1px solid var(--glass-border);
-border-radius:999px;
-padding:6px 14px;
-font-weight:600;
-cursor:pointer;
-box-shadow:var(--shadow);
-transition:transform .25s,box-shadow .25s
-}
-.lang-toggle button:hover{
-box-shadow:var(--glow);
-transform:translateY(-2px)
+/* =====================
+   RESET
+===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* HEADER */
-header{text-align:center;padding:120px 20px 40px}
-header img{
-width:140px;height:140px;border-radius:18px;
-object-fit:cover;box-shadow:var(--shadow)
+html {
+  scroll-behavior: smooth;
 }
-.lead{color:var(--accent-soft)}
 
-/* LAYOUT */
-.container{width:92%;max-width:1150px;margin:40px auto 80px}
-h2{margin-top:70px}
-.two-col{display:flex;gap:28px}
-@media(max-width:880px){.two-col{flex-direction:column}}
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
 
-.card{
-background:var(--card);
-border:1px solid var(--glass-border);
-border-radius:12px;
-padding:22px;
-box-shadow:var(--shadow);
-transition:transform .25s,box-shadow .25s
+/* =====================
+   TYPOGRAPHY SYSTEM
+===================== */
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.card:hover{transform:translateY(-4px);box-shadow:var(--glow)}
 
-.skills-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px
+h2 {
+  font-size: clamp(2.1rem, 4vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
-@media(max-width:880px){.skills-grid{grid-template-columns:1fr}}
 
-.skill-card{padding:16px}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
 
-/* PROJECTS */
-.projects-track{
-display:flex;
-gap:22px;
-overflow-x:auto;
-scroll-behavior:smooth;
-padding-bottom:10px
+p {
+  font-size: 1.05rem;
+  color: var(--text);
 }
-.project-card{
-width:380px;
-height:260px;
-flex:0 0 auto;
-border-radius:12px;
-overflow:hidden;
-position:relative
-}
-.project-card img{
-width:100%;height:100%;object-fit:cover;
-transition:transform .6s,filter .45s
-}
-.project-info{
-position:absolute;inset:0;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:20px;
-color:#fff;
-opacity:0;
-transition:opacity .35s;
-text-shadow:0 2px 8px rgba(0,0,0,.6)
-}
-.project-card:hover img{
-transform:scale(1.06);
-filter:blur(4px) brightness(.55)
-}
-.project-card:hover .project-info{opacity:1}
 
-/* CONTACT */
-.contact-box{
-max-width:520px;
-margin:20px auto;
-display:flex;
-flex-direction:column;
-gap:14px
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.contact-item{display:flex;gap:12px;align-items:center}
 
-footer{text-align:center;padding:40px;color:var(--accent)}
-
-/* LANGUAGE FADE */
-.fade{
-animation:fade .35s ease
+/* =====================
+   LAYOUT
+===================== */
+section {
+  min-height: 100vh;
+  padding: 120px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-@keyframes fade{
-from{opacity:0;transform:translateY(6px)}
-to{opacity:1;transform:none}
+
+@media (max-width: 900px) {
+  section {
+    padding: 110px 6% 90px;
+  }
+}
+
+/* =====================
+   FADE / SLIDE ANIMATION
+===================== */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-<ul>
-<li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
-<li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
-<li><a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a></li>
-<li><a href="#contact" data-es="Contacto" data-en="Contact">Contact</a></li>
-</ul>
-</nav>
+<!-- =====================
+     NAVBAR
+===================== -->
+<header class="navbar">
+  <div class="nav-container">
+    <span class="logo">SLV</span>
 
-<div class="lang-toggle">
-<button id="langBtn">EN</button>
-</div>
+    <nav>
+      <a href="#about" data-es="Sobre mí" data-en="About">About</a>
+      <a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a>
+      <a href="#skills" data-es="Habilidades" data-en="Skills">Skills</a>
+      <a href="#contact" data-es="Contacto" data-en="Contact">Contact</a>
+    </nav>
 
-<header>
-<img src="me.jpg" alt="Samantha">
-<h1>Samantha López Vizcarra</h1>
-<p class="lead" data-es="Data Scientist Jr" data-en="Junior Data Scientist">
-Data Scientist Jr
-</p>
+    <!-- Language Toggle -->
+    <button id="lang-toggle" class="lang-btn">EN</button>
+  </div>
 </header>
 
-<div class="container">
-
-<h2 id="about" data-es="Sobre mí" data-en="About Me">About Me</h2>
-<div class="two-col">
-<div class="card">
-<p data-es="Soy recién egresada de Ingeniería Mecatrónica con sólida base en matemáticas, programación y estadística. Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Con conocimientos prácticos y orientados a proyectos en machine learning, análisis y visualización de datos, así como manejo de herramientas clave como Python, SQL, Power BI, Looker Studio y metodologías lean. Mi experiencia previa como desarrolladora de prototipos I+D en el sector biomédico me ha proporcionado habilidades blandas en resolución de problemas complejos, atención al detalle y colaboración en equipos multidisciplinarios. Busco aplicar esta combinación única de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y desarrollar soluciones que generen valor real."
-data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as proficiency in key tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies. My previous experience as an R&D prototype developer in the biomedical sector strengthened my problem-solving skills, attention to detail, and ability to collaborate in multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and create solutions that generate real value."></p>
-</div>
-</div>
-
-<h2 id="projects" data-es="Proyectos" data-en="Projects">Projects</h2>
-<div class="projects-track">
-<a class="project-card" href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor"><img src="mobile-plan.jpg"><div class="project-info"><h3>Mobile plan recommender</h3><p>Classification model recommending optimal phone plans.</p></div></a>
-<a class="project-card" href="https://github.com/Samanthalopezvizcarra/bank-retention-model"><img src="bankchurn.jpg"><div class="project-info"><h3>Bank churn prediction</h3><p>Customer churn prediction optimizing F1 score.</p></div></a>
-<a class="project-card" href="https://github.com/Samanthalopezvizcarra/oil-profit-optimization"><img src="oil.jpg"><div class="project-info"><h3>Oil profit optimization</h3><p>Region selection with risk constraints.</p></div></a>
-<!-- puedes seguir agregando TODOS los demás aquí igual -->
-</div>
-
-<h2 id="skills" data-es="Habilidades" data-en="Skills">Skills</h2>
-<div class="skills-grid">
-<div class="card skill-card"><strong>Languages</strong><p>Python · SQL · C++ · MATLAB · HTML</p></div>
-<div class="card skill-card"><strong>Tools</strong><p>Pandas · NumPy · Scikit-learn · Power BI · GitHub</p></div>
-<div class="card skill-card"><strong>Languages</strong><p data-es="Inglés B2 · Español nativo" data-en="English B2 · Native Spanish"></p></div>
-</div>
-
-<h2 id="contact" data-es="Contacto" data-en="Contact">Contact</h2>
-<div class="card contact-box">
-<div class="contact-item"><i class="fa-solid fa-location-dot"></i> Mexico City, Mexico</div>
-<div class="contact-item"><i class="fa-solid fa-envelope"></i> samanthalopezvizcarra@gmail.com</div>
-<div class="contact-item"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
-<div class="contact-item"><i class="fa-brands fa-github"></i> GitHub</div>
-</div>
-
-</div>
-
-<footer>© 2025 Samantha López Vizcarra</footer>
-
-<script>
-let lang=localStorage.getItem("lang")||"es";
-const btn=document.getElementById("langBtn");
-
-function setLang(l){
-document.querySelectorAll("[data-es]").forEach(el=>{
-el.classList.remove("fade");
-void el.offsetWidth;
-el.textContent=el.dataset[l];
-el.classList.add("fade");
-});
-btn.textContent=l.toUpperCase();
-localStorage.setItem("lang",l);
+<style>
+/* =====================
+   NAVBAR STYLES
+===================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(11,11,11,0.6);
+  backdrop-filter: blur(14px);
 }
 
-btn.onclick=()=>{lang=lang==="es"?"en":"es";setLang(lang)};
-setLang(lang);
-</script>
+.nav-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 18px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
 
-</body>
-</html>
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+nav a {
+  margin: 0 18px;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: opacity .3s var(--ease);
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+</style>
+
+<!-- =====================
+     HERO SECTION (BLACK)
+===================== -->
+<section id="home" class="hero fade show"
+  style="
+    background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+      url('me.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+  "
+>
+
+  <h1>Samantha López Vizcarra</h1>
+
+  <p
+    data-es="Data Scientist Jr especializada en Machine Learning y Análisis de Datos"
+    data-en="Junior Data Scientist specialized in Machine Learning and Data Analysis"
+    style="margin:20px auto 40px;max-width:680px;color:#d1d5db;"
+  >
+    Data Scientist Jr specialized in Machine Learning and Data Analysis
+  </p>
+
+  <a href="#contact"
+     class="btn"
+     style="background:white;color:black;"
+     data-es="Contáctame"
+     data-en="Contact me">
+    Contact me
+  </a>
+
+</section>
+
+<!-- =====================
+     ABOUT SECTION
+===================== -->
+<section id="about" class="fade" style="background:white;">
+
+  <div class="about-container">
+
+    <!-- FOTO -->
+    <div class="about-image">
+      <img src="about.jpg" alt="About Samantha">
+    </div>
+
+    <!-- TEXTO -->
+    <div class="about-text">
+
+      <h2
+        data-es="Sobre mí"
+        data-en="About Me">
+        About Me
+      </h2>
+
+      <p
+        data-es="Soy recién egresada de Ingeniería Mecatrónica con una sólida base en matemáticas, programación y estadística. Soy Data Scientist Jr certificada por el bootcamp intensivo de TripleTen, con nivel de inglés B2. Tengo experiencia práctica y orientada a proyectos en machine learning, análisis y visualización de datos, así como dominio de herramientas como Python, SQL, Power BI, Looker Studio y metodologías lean."
+        data-en="I am a recent graduate in Mechatronics Engineering with a strong foundation in mathematics, programming, and statistics. I am a Junior Data Scientist certified by the intensive TripleTen bootcamp, with B2 English proficiency. I have hands-on, project-oriented experience in machine learning, data analysis, and data visualization, as well as strong proficiency in tools such as Python, SQL, Power BI, Looker Studio, and lean methodologies.">
+      </p>
+
+      <p
+        data-es="Mi experiencia previa como desarrolladora de prototipos en I+D dentro del sector biomédico fortaleció mis habilidades en resolución de problemas complejos, atención al detalle y colaboración con equipos multidisciplinarios. Busco aplicar esta combinación de ciencia de datos, pensamiento analítico e ingeniería para impulsar decisiones basadas en datos y crear soluciones con impacto real."
+        data-en="My previous experience as an R&D prototype developer in the biomedical sector strengthened my skills in complex problem-solving, attention to detail, and collaboration with multidisciplinary teams. I am seeking to apply this unique combination of data science, analytical thinking, and engineering to drive data-driven decisions and build solutions with real impact.">
+      </p>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* =====================
+   ABOUT STYLES
+===================== */
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.about-text h2 {
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  margin-bottom: 18px;
+  color: var(--muted);
+  max-width: 720px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image {
+    max-width: 320px;
+    margin: auto;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
+
+<!-- =====================
+     PROJECTS SECTION
+===================== -->
+<section id="projects" class="fade" style="background:white;">
+
+  <h2
+    data-es="Proyectos"
+    data-en="Projects"
+    style="text-align:center;margin-bottom:60px;">
+    Projects
+  </h2>
+
+  <!-- CARRUSEL 1 -->
+  <div class="carousel">
+    <div class="track">
+
+      <!-- PROJECT CARD -->
+      <div class="project-card">
+        <h3
+          data-es="Predicción de abandono de clientes"
+          data-en="Customer Churn Prediction">
+          Customer Churn Prediction
+        </h3>
+        <p
+          data-es="Modelo de machine learning para predecir churn usando Python y scikit-learn."
+          data-en="Machine learning model to predict customer churn using Python and scikit-learn.">
+        </p>
+        <span>Python · ML · Scikit-learn</span>
+      </div>
+
+      <div class="project-card">
+        <h3
+          data-es="Análisis de ventas"
+          data-en="Sales Analysis Dashboard">
+          Sales Analysis Dashboard
+        </h3>
+        <p
+          data-es="Dashboard interactivo para análisis de ventas con Power BI."
+          data-en="Interactive dashboard for sales analysis using Power BI.">
+        </p>
+        <span>Power BI · SQL</span>
+      </div>
+
+      <div class="project-card">
+        <h3
+          data-es="Clasificación de imágenes"
+          data-en="Image Classification">
+          Image Classification
+        </h3>
+        <p
+          data-es="Modelo de deep learning para clasificación de imágenes."
+          data-en="Deep learning model for image classification.">
+        </p>
+        <span>PyTorch · CNN</span>
+      </div>
+
+      <!-- DUPLICADO PARA LOOP INFINITO -->
+      <div class="project-card">
+        <h3>Customer Churn Prediction</h3>
+        <p></p>
+        <span>Python · ML</span>
+      </div>
+
+      <div class="project-card">
+        <h3>Sales Analysis Dashboard</h3>
+        <p></p>
+        <span>Power BI · SQL</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CARRUSEL 2 (INVERSO) -->
+  <div class="carousel reverse">
+    <div class="track">
+
+      <div class="project-card">
+        <h3
+          data-es="Segmentación de clientes"
+          data-en="Customer Segmentation">
+          Customer Segmentation
+        </h3>
+        <p
+          data-es="Clustering para segmentación de clientes."
+          data-en="Clustering techniques for customer segmentation.">
+        </p>
+        <span>Python · K-Means</span>
+      </div>
+
+      <div class="project-card">
+        <h3
+          data-es="Sistema de recomendación"
+          data-en="Recommendation System">
+          Recommendation System
+        </h3>
+        <p
+          data-es="Sistema de recomendación basado en comportamiento."
+          data-en="Behavior-based recommendation system.">
+        </p>
+        <span>Python · ML</span>
+      </div>
+
+      <!-- DUPLICADOS -->
+      <div class="project-card">
+        <h3>Customer Segmentation</h3>
+        <p></p>
+        <span>Python · Clustering</span>
+      </div>
+
+      <div class="project-card">
+        <h3>Recommendation System</h3>
+        <p></p>
+        <span>Python · ML</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* =====================
+   PROJECTS STYLES
+===================== */
+.carousel {
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.track {
+  display: flex;
+  gap: 28px;
+  animation: scroll 60s linear infinite;
+}
+
+.carousel.reverse .track {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.project-card {
+  min-width: 320px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card h3 {
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.project-card span {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+</style>
+
+<!-- =====================
+     SKILLS SECTION
+===================== -->
+<section id="skills" class="fade" style="background:#f7f8fa;">
+
+  <h2
+    data-es="Habilidades"
+    data-en="Skills"
+    style="text-align:center;margin-bottom:60px;">
+    Skills
+  </h2>
+
+  <div class="skills-wrapper">
+
+    <!-- SKILL CATEGORY -->
+    <div class="skill-category">
+      <h3>Languages</h3>
+      <div class="skill-grid">
+        <div class="skill"><i class="fa-brands fa-python"></i>Python</div>
+        <div class="skill"><i class="fa-solid fa-database"></i>SQL</div>
+        <div class="skill"><i class="fa-solid fa-code"></i>C++</div>
+        <div class="skill"><i class="fa-solid fa-square-root-variable"></i>MATLAB</div>
+        <div class="skill"><i class="fa-brands fa-html5"></i>HTML</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Data & ML</h3>
+      <div class="skill-grid">
+        <div class="skill"><i class="fa-solid fa-chart-line"></i>Pandas</div>
+        <div class="skill"><i class="fa-solid fa-cubes"></i>NumPy</div>
+        <div class="skill"><i class="fa-solid fa-brain"></i>Scikit-learn</div>
+        <div class="skill"><i class="fa-solid fa-chart-area"></i>Matplotlib</div>
+        <div class="skill"><i class="fa-solid fa-wave-square"></i>Seaborn</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>BI & Tools</h3>
+      <div class="skill-grid">
+        <div class="skill"><i class="fa-solid fa-chart-pie"></i>Power BI</div>
+        <div class="skill"><i class="fa-solid fa-chart-column"></i>Looker Studio</div>
+        <div class="skill"><i class="fa-brands fa-github"></i>GitHub</div>
+        <div class="skill"><i class="fa-solid fa-book"></i>Jupyter</div>
+        <div class="skill"><i class="fa-solid fa-plug"></i>APIs</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Languages</h3>
+      <div class="skill-grid">
+        <div class="skill"><i class="fa-solid fa-globe"></i>Spanish (Native)</div>
+        <div class="skill"><i class="fa-solid fa-language"></i>English (B2)</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* =====================
+   SKILLS STYLES
+===================== */
+.skills-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 40px;
+}
+
+.skill-category h3 {
+  margin-bottom: 20px;
+  font-size: 1.15rem;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+  gap: 14px;
+}
+
+.skill {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+.skill i {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.skill:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+</style>
+
+<!-- =====================
+     CONTACT SECTION
+===================== -->
+<section id="contact" class="fade contact-section">
+
+  <h2
+    data-es="Contacto"
+    data-en="Contact"
+    style="text-align:center;margin-bottom:60px;">
+    Contact
+  </h2>
+
+  <div class="contact-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="contact-col">
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Mexico</span>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:samanthalopezvizcarra@gmail.com">
+          samanthalopezvizcarra@gmail.com
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+52XXXXXXXXXX">
+          +52 XXXXX XXXXX
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="contact-col">
+      <div class="contact-item">
+        <i class="fa-brands fa-github"></i>
+        <a href="https://github.com/Samanthalopezvizcarra" target="_blank">
+          GitHub
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-brands fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/samanthalopez-datascientist/" target="_blank">
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-file-pdf"></i>
+        <a
+          href="https://docs.google.com/document/d/1zCNHB7ACw_Lnq2W0c3g8M57k1Qe7CPQH/edit"
+          target="_blank">
+          Download CV
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+  © 2025 Samantha López Vizcarra
+</footer>
+
+<style>
+/* =====================
+   CONTACT STYLES
+===================== */
+.contact-section {
+  background: #0b0b0b;
+  color: white;
+  padding: 120px 20px;
+}
+
+.contact-grid {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 60px;
+}
+
+.contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+}
+
+.contact-item i {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.contact-item a {
+  color: white;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
+
+.footer {
+  background: #0b0b0b;
+  color: #777;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.85rem;
+}
+</style>
+
