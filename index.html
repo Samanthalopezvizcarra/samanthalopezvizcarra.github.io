@@ -512,11 +512,6 @@
                     </div>
                 </a>
 
-            </div>
-
-
-            <div class="track">
-
                 <!-- PROJECT CARD 2 -->
                 <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank"
                     class="project-card">
@@ -747,11 +742,6 @@
                     </div>
                 </a>
 
-
-            </div>
-
-            <div class="track">
-
                 <!-- PROJECT CARD -->
 
                 <a href="https://github.com/Samanthalopezvizcarra/mobile-plan-predictor" target="_blank"
@@ -910,26 +900,25 @@
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .carousel:hover .track,
-        .carousel.reverse:hover .track {
-            animation-play-state: paused;
-        }
-
         .carousel {
-            overflow: hidden;
             width: 100%;
+            overflow: hidden;
         }
 
         .track {
             display: flex;
             gap: 26px;
-            animation: scroll-left 50s linear infinite;
             width: max-content;
-            padding-left: 100%;
+            animation: scroll-left 45s linear infinite;
         }
 
         .carousel.reverse .track {
-            animation: scroll-right 50s linear infinite;
+            animation: scroll-right 45s linear infinite;
+        }
+
+        /* PAUSA AL HOVER */
+        .carousel:hover .track {
+            animation-play-state: paused;
         }
 
         .project-card {
