@@ -903,17 +903,24 @@
         .carousel {
             width: 100%;
             overflow: hidden;
+            position: relative;
+
+            /* ZONA DE ESCAPE */
+            padding-left: 12vw;
+            padding-right: 12vw;
+            margin-left: -12vw;
+            margin-right: -12vw;
         }
 
         .track {
             display: flex;
             gap: 26px;
             width: max-content;
-            animation: scroll-left 45s linear infinite;
+            animation: scroll-left 55s linear infinite;
         }
 
         .carousel.reverse .track {
-            animation: scroll-right 45s linear infinite;
+            animation: scroll-right 55s linear infinite;
         }
 
         /* PAUSA AL HOVER */
