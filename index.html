@@ -134,7 +134,7 @@
             background:
                 linear-gradient(rgba(0, 0, 0, 0.75),
                     rgba(0, 0, 0, 0.75)),
-                url("me.jpg") center/cover no-repeat;
+                url("about.jpg") center/cover no-repeat;
             text-align: center;
             color: white;
             min-height: 100vh;
@@ -343,7 +343,7 @@
 
             <!-- FOTO -->
             <div>
-                <img src="about.jpg" alt="About Samantha" style="
+                <img src="me.jpg" alt="About Samantha" style="
              width: 100%;
              max-width: 420px;
              border-radius: 24px;
@@ -631,16 +631,6 @@
         <div class="carousel reverse">
             <div class="track">
                 <!-- PROJECT CARD -->
-                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-                    <img src="fire.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                            Wildfire prediction</h3>
-                        <p data-es="Detección y predicción de incendios con visión computacional."
-                            data-en="Wildfire detection and prediction using computer vision."></p>
-                    </div>
-                </a>
-
                 <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank"
                     class="project-card">
                     <img src="internet.jpg">
@@ -737,20 +727,20 @@
                         <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
                             data-en="Classification model that recommends the optimal mobile plan for each customer.">
                         </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
+                    <img src="fire.jpg">
+                    <div class="info">
+                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
+                            Wildfire prediction</h3>
+                        <p data-es="Detección y predicción de incendios con visión computacional."
+                            data-en="Wildfire detection and prediction using computer vision."></p>
                     </div>
                 </a>
 
                 <!-- PROJECT CARD 2-->
-                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
-                    <img src="fire.jpg">
-                    <div class="info">
-                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
-                            Wildfire prediction</h3>
-                        <p data-es="Detección y predicción de incendios con visión computacional."
-                            data-en="Wildfire detection and prediction using computer vision."></p>
-                    </div>
-                </a>
-
                 <a href="https://github.com/Samanthalopezvizcarra/predict-customer-churn" target="_blank"
                     class="project-card">
                     <img src="internet.jpg">
@@ -847,6 +837,16 @@
                         <p data-es="Modelo de clasificación que recomienda el plan telefónico óptimo para cada cliente."
                             data-en="Classification model that recommends the optimal mobile plan for each customer.">
                         </p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/JesusAntonioL/fwi_equipo_1" target="_blank" class="project-card">
+                    <img src="fire.jpg">
+                    <div class="info">
+                        <h3 data-es="Predicción de incendios forestales" data-en="Wildfire detection and prediction">
+                            Wildfire prediction</h3>
+                        <p data-es="Detección y predicción de incendios con visión computacional."
+                            data-en="Wildfire detection and prediction using computer vision."></p>
                     </div>
                 </a>
 
@@ -915,31 +915,23 @@
 
         .carousel::before {
             left: 0;
-            background: linear-gradient(
-                to right,
-                var(--bg),
-                transparent
-            );
+            background: linear-gradient(to right, var(--bg) 30%, transparent);
         }
 
         .carousel::after {
             right: 0;
-            background: linear-gradient(
-                to left,
-                var(--bg),
-                transparent
-            );
+            background: linear-gradient(to left, var(--bg) 30%, transparent);
         }
 
         .track {
             display: flex;
             gap: 26px;
             width: max-content;
-            animation: scroll-left 55s linear infinite;
+            animation: scroll-left 70s linear infinite;
         }
 
         .carousel.reverse .track {
-            animation: scroll-right 55s linear infinite;
+            animation: scroll-right 70s linear infinite;
         }
 
         /* PAUSA AL HOVER */
