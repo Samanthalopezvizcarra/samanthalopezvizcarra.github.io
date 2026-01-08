@@ -1,1 +1,1 @@
-c
+Imágenes usadas
