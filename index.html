@@ -1525,13 +1525,10 @@
      JS: LANGUAGE + FADE
 ===================== -->
     <script>
-        let currentLang = 'en';
+        let currentLang = 'es';
         const langBtn = document.getElementById('langBtn');
 
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            langBtn.textContent = currentLang.toUpperCase();
-
+        function updateLanguage() {
             document.querySelectorAll('[data-es]').forEach(el => {
                 el.classList.remove('show');
                 setTimeout(() => {
@@ -1539,6 +1536,18 @@
                     el.classList.add('show');
                 }, 150);
             });
+            langBtn.textContent = currentLang.toUpperCase();
+        }
+
+        // Llamamos al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage();
+        });
+
+        // Cambios en el click
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            updateLanguage();
         });
 
         // FADE IN ON SCROLL
